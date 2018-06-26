@@ -1,0 +1,69 @@
+﻿<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Amaze UI Admin index Examples</title>
+  <meta name="description" content="这是一个 index 页面">
+  <meta name="keywords" content="index">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="renderer" content="webkit">
+	<link rel="icon" type="image/png" th:href="@{/assets/i/favicon.png}" href="/static/assets/i/favicon.png">
+	<link rel="apple-touch-icon-precomposed" th:href="@{/assets/i/app-icon72x72@2x.png}" href="/static/assets/i/app-icon72x72@2x.png">
+	<meta name="apple-mobile-web-app-title" content="Amaze UI" />
+	<link rel="stylesheet" th:href="@{/assets/css/amazeui.min.css}" href="../static/assets/css/amazeui.min.css"/>
+	<link rel="stylesheet" th:href="@{/assets/css/admin.css}" href="../static/assets/css/admin.css">
+	<link rel="stylesheet" th:href="@{/assets/css/app.css}" href="../static/assets/css/app.css">
+  <script>
+  function doLogin(){
+	  
+	  //校验并提交登录表单
+	  
+	  document.loginForm.submit();
+  }
+
+  
+  function gotoTop(){
+	  if(parent.location.href != location.href){
+		  parent.location.href = "login.html";
+	  }
+  }
+</script>
+</head>
+
+<body data-type="login" onload="gotoTop();">
+
+  <div class="am-g myapp-login">
+	<div class="myapp-login-logo-block  tpl-login-max">
+		<div class="myapp-login-logo-text">
+			<div class="myapp-login-logo-text">
+				Amaze UI<span> Login</span> <i class="am-icon-skyatlas"></i>
+				
+			</div>
+		</div>
+
+		<div class="login-font">
+			<i>Log In </i> or <span> Sign Up</span>
+		</div>
+		<div class="am-u-sm-10 login-am-center">
+			<form name="loginForm" action="/doLogin" method="post" class="am-form">
+				<fieldset>
+					<div class="am-form-group">
+						<input id="account" name="account" type="text" >
+					</div>
+					<div class="am-form-group">
+						<input name="password" id="password" type="password" >
+					</div>
+					<p><button type="submit" class="am-btn am-btn-default">登录</button></p>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+</div>
+
+  <script th:src="@{/assets/js/jquery.min.js}" src="/static/assets/js/jquery.min.js"></script>
+  <script th:src="@{/assets/js/amazeui.min.js}" src="/static/assets/js/amazeui.min.js"></script>
+  <script th:src="@{/assets/js/app.js}" src="/static/assets/js/app.js"></script>
+</body>
+
+</html>
