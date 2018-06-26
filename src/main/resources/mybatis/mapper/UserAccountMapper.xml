@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.exercise.gmsys.mapper.UserAccountMapper">
+  <resultMap id="BaseResultMap" type="com.exercise.gmsys.model.UserAccount">
+    <id column="USERID" jdbcType="INTEGER" property="USERID" />
+    <result column="USERNAME" jdbcType="VARCHAR" property="USERNAME" />
+    <result column="ACCOUNTS" jdbcType="VARCHAR" property="ACCOUNTS" />
+    <result column="PASSWORD" jdbcType="VARCHAR" property="PASSWORD" />
+    <result column="SEX" jdbcType="VARCHAR" property="SEX" />
+    <result column="AGE" jdbcType="TIMESTAMP" property="AGE" />
+    <result column="PHONE" jdbcType="VARCHAR" property="PHONE" />
+    <result column="RAGEDATE" jdbcType="TIMESTAMP" property="RAGEDATE" />
+    <result column="RID" jdbcType="INTEGER" property="RID" />
+    <result column="DEPARTID" jdbcType="INTEGER" property="DEPARTID" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    USERID, USERNAME, ACCOUNTS, PASSWORD, SEX, AGE, PHONE, RAGEDATE, RID, DEPARTID
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from useraccount
+    where USERID = #{USERID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from useraccount
+    where USERID = #{USERID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.exercise.gmsys.model.UserAccount">
+    insert into useraccount (USERID, USERNAME, ACCOUNTS, 
+      PASSWORD, SEX, AGE, 
+      PHONE, RAGEDATE, RID, 
+      DEPARTID)
+    values (#{USERID,jdbcType=INTEGER}, #{USERNAME,jdbcType=VARCHAR}, #{ACCOUNTS,jdbcType=VARCHAR}, 
+      #{PASSWORD,jdbcType=VARCHAR}, #{SEX,jdbcType=VARCHAR}, #{AGE,jdbcType=TIMESTAMP}, 
+      #{PHONE,jdbcType=VARCHAR}, #{RAGEDATE,jdbcType=TIMESTAMP}, #{RID,jdbcType=INTEGER}, 
+      #{DEPARTID,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.exercise.gmsys.model.UserAccount">
+    insert into useraccount
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="USERID != null">
+        USERID,
+      </if>
+      <if test="USERNAME != null">
+        USERNAME,
+      </if>
+      <if test="ACCOUNTS != null">
+        ACCOUNTS,
+      </if>
+      <if test="PASSWORD != null">
+        PASSWORD,
+      </if>
+      <if test="SEX != null">
+        SEX,
+      </if>
+      <if test="AGE != null">
+        AGE,
+      </if>
+      <if test="PHONE != null">
+        PHONE,
+      </if>
+      <if test="RAGEDATE != null">
+        RAGEDATE,
+      </if>
+      <if test="RID != null">
+        RID,
+      </if>
+      <if test="DEPARTID != null">
+        DEPARTID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="USERID != null">
+        #{USERID,jdbcType=INTEGER},
+      </if>
+      <if test="USERNAME != null">
+        #{USERNAME,jdbcType=VARCHAR},
+      </if>
+      <if test="ACCOUNTS != null">
+        #{ACCOUNTS,jdbcType=VARCHAR},
+      </if>
+      <if test="PASSWORD != null">
+        #{PASSWORD,jdbcType=VARCHAR},
+      </if>
+      <if test="SEX != null">
+        #{SEX,jdbcType=VARCHAR},
+      </if>
+      <if test="AGE != null">
+        #{AGE,jdbcType=TIMESTAMP},
+      </if>
+      <if test="PHONE != null">
+        #{PHONE,jdbcType=VARCHAR},
+      </if>
+      <if test="RAGEDATE != null">
+        #{RAGEDATE,jdbcType=TIMESTAMP},
+      </if>
+      <if test="RID != null">
+        #{RID,jdbcType=INTEGER},
+      </if>
+      <if test="DEPARTID != null">
+        #{DEPARTID,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.exercise.gmsys.model.UserAccount">
+    update useraccount
+    <set>
+      <if test="USERNAME != null">
+        USERNAME = #{USERNAME,jdbcType=VARCHAR},
+      </if>
+      <if test="ACCOUNTS != null">
+        ACCOUNTS = #{ACCOUNTS,jdbcType=VARCHAR},
+      </if>
+      <if test="PASSWORD != null">
+        PASSWORD = #{PASSWORD,jdbcType=VARCHAR},
+      </if>
+      <if test="SEX != null">
+        SEX = #{SEX,jdbcType=VARCHAR},
+      </if>
+      <if test="AGE != null">
+        AGE = #{AGE,jdbcType=TIMESTAMP},
+      </if>
+      <if test="PHONE != null">
+        PHONE = #{PHONE,jdbcType=VARCHAR},
+      </if>
+      <if test="RAGEDATE != null">
+        RAGEDATE = #{RAGEDATE,jdbcType=TIMESTAMP},
+      </if>
+      <if test="RID != null">
+        RID = #{RID,jdbcType=INTEGER},
+      </if>
+      <if test="DEPARTID != null">
+        DEPARTID = #{DEPARTID,jdbcType=INTEGER},
+      </if>
+    </set>
+    where USERID = #{USERID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.exercise.gmsys.model.UserAccount">
+    update useraccount
+    set USERNAME = #{USERNAME,jdbcType=VARCHAR},
+      ACCOUNTS = #{ACCOUNTS,jdbcType=VARCHAR},
+      PASSWORD = #{PASSWORD,jdbcType=VARCHAR},
+      SEX = #{SEX,jdbcType=VARCHAR},
+      AGE = #{AGE,jdbcType=TIMESTAMP},
+      PHONE = #{PHONE,jdbcType=VARCHAR},
+      RAGEDATE = #{RAGEDATE,jdbcType=TIMESTAMP},
+      RID = #{RID,jdbcType=INTEGER},
+      DEPARTID = #{DEPARTID,jdbcType=INTEGER}
+    where USERID = #{USERID,jdbcType=INTEGER}
+  </update>
+</mapper>
