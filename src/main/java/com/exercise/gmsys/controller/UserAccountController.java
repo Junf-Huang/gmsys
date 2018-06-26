@@ -2,12 +2,12 @@ package com.exercise.gmsys.controller;
 
 import com.exercise.gmsys.impl.UserAccountServiceImp;
 import com.exercise.gmsys.model.UserAccount;
+import com.exercise.gmsys.service.UserAccountService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.Mapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpSession;
@@ -19,14 +19,17 @@ public class UserAccountController {
     // 在mvc的控制层整合service服务层
 
     @Autowired
-    private UserAccountServiceImp userAccountServiceImp;
+    private UserAccountService userAccountService;
 
     //在浏览中通过URL调用这个方法进行登录:doLogin.do
     @PostMapping("/doLogin")
     public String doLogin(String account, String password, HttpSession session, Model model) {
 
-        UserAccount userAccount = userAccountServiceImp.findUserByAccount(account);
+        //UserAccount userAccount = userAccountService.findUserByAccount(account);
+        UserAccount userAccount = userAccountService.selectByPrimaryKey(3);
 
+        log.info("loginName={}", userAccount.getACCOUNTS());
+        log.info("password={}", userAccount.getPASSWORD());
         if (userAccount != null && userAccount.getPASSWORD().equals(password)) {
             // 登录成功，进入到管理界面
             //保存用户登录状态
@@ -67,8 +70,8 @@ public class UserAccountController {
     @ResponseBody
     @GetMapping(value = "/test")
     public UserAccount test(){
-        log.info("user={}",userAccountServiceImp.findUserByAccount("admin"));
-        return userAccountServiceImp.findUserByAccount("admin");
+        log.info("user={}",userAccountService.findUserByAccount("admin"));
+        return userAccountService.findUserByAccount("admin");
     }
 }
 

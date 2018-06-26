@@ -1,0 +1,12 @@
+
+
+<div th:replace="index::header">
+    <div th:replace="index::list">
+
+        List<Category> findAll();
+
+        <select id="findAll" resultMap="BaseResultMap">
+            select
+            <include refid="Base_Column_List" />
+            from category
+        </select>

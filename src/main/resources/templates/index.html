@@ -11,7 +11,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <meta name="description" content="这是一个 index 页面">
     <meta name="keywords" content="index">
     <meta name="renderer" content="webkit">
-    <meta http-equiv="Cache-Control" content="no-siteapp" />
     <link rel="icon" type="image/png" th:href="@{/assets/i/favicon.png}" href="/static/assets/i/favicon.png">
     <link rel="apple-touch-icon-precomposed" th:href="@{/assets/i/app-icon72x72@2x.png}" href="/static/assets/i/app-icon72x72@2x.png">
     <meta name="apple-mobile-web-app-title" content="Amaze UI" />
@@ -24,6 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body data-type="index">
 
 
+<div th:fragment="header">
     <header class="am-topbar am-topbar-inverse admin-header">
         <div class="am-topbar-brand">
             <a href="javascript:;" class="tpl-logo" style="margin-top: 30px;">
@@ -146,6 +146,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </ul>
         </div>
     </header>
+</div>
 
 
 
@@ -153,7 +154,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 
-    <div class="tpl-page-container tpl-page-header-fixed">
+    <div class="tpl-page-container tpl-page-header-fixed" th:fragment="list">
 
 
         <div class="tpl-left-nav tpl-left-nav-hover">
@@ -170,22 +171,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </a>
 			<ul class="tpl-left-nav-sub-menu">
                             <li>
-                                <a href="${pageContext.request.contextPath}/category/findAll.do">
+                                <a href="/category/findAll" th:href="@{/category/findAll}">
                                     <i class="am-icon-angle-right"></i>
                                     <span>资产分类设置</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>
                                 </a>
-                                <a href="${pageContext.request.contextPath}/department/findAll.do">
+                                <a href="/department/findAll" th:href="@{/department/findAll}">
                                     <i class="am-icon-angle-right"></i>
                                     <span>部门设置</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>
                                 </a>
-                                <a href="../templates/files/addzc.html">
+                                <a href="../templates/files/addzc.html" >
                                      <i class="am-icon-angle-right"></i>
                                         <span>资产录入</span>
                                      <i class="tpl-left-nav-content tpl-badge-primary"></i>
                                 </a>
-                                <a href="../area/list.do">
+                                <a href="/area/list" th:href="@{/area/list}">
                                      <i class="am-icon-angle-right"></i>
                                      <span>区域管理</span>
                                 </a>
@@ -285,7 +286,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </li>
 
                     <li class="tpl-left-nav-item">
-                        <a href="login.html" class="nav-link tpl-left-nav-link-list">
+                        <a href="login" class="nav-link tpl-left-nav-link-list">
                             <i class="am-icon-key"></i>
                             <span>登录</span>
 
@@ -305,10 +306,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
         </div>
 
-    <script th:src="@{/assets/js/jquery.min.js}" src="/static/assets/js/jquery.min.js"></script>
-    <script th:src="@{/assets/js/amazeui.min.js}" src="/static/assets/js/amazeui.min.js"></script>
-    <script th:src="@{/assets/js/iscroll.js}" src="/static/assets/js/iscroll.js"></script>
-    <script th:src="@{/assets/js/app.js}" src="/static/assets/js/app.js"></script>
+    <script th:src="@{/assets/js/jquery.min.js}" src="../static/assets/js/jquery.min.js"></script>
+    <script th:src="@{/assets/js/amazeui.min.js}" src="../static/assets/js/amazeui.min.js"></script>
+    <script th:src="@{/assets/js/iscroll.js}" src="../static/assets/js/iscroll.js"></script>
+    <script th:src="@{/assets/js/app.js}" src="../static/assets/js/app.js"></script>
 </body>
 
 </html>

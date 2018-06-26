@@ -363,51 +363,48 @@ function link(){
 
 
 
-<%--内容 --%>
+<!--内容-->
+        <br />
+        <br />
+
         <div class="tpl-content-wrapper">
             <form name="fom" id="fom" method="post">
 				  <table width="100%" border="0" cellspacing="0" cellpadding="0">
 				  <tr>
-				    <td height="30">      
-				  <table width="100%" border="0" cellspacing="0" cellpadding="0">
-				  <tr>
-				    <td height="62" background="../images/nav04.gif">         
-					<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
-					<tr>
-						<td width="21">&nbsp;</td>
-					</tr>
-				  </table></td>
-				  </tr>
-				  </table></td></tr>
-				  <tr>
 				    <td><table id="subtree1" style="DISPLAY: " width="100%" border="0" cellspacing="0" cellpadding="0">
 				  <tr>
-				    <td><table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
-				  <tr>
-				    <td height="40" class="font42"><table width="100%" border="0" cellpadding="4" cellspacing="1" bgcolor="#464646" class="newfont03">
-				  <tr>
-				    <td height="20" colspan="2" align="center" bgcolor="#EEEEEE"class="tablestyle_title"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 资产分类详细内容</td>
+				    <td>
+                        <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
+
+				            <tr>
+				                <td height="40" class="font42">
+                        <table width="100%" border="0" cellpadding="4" cellspacing="1" bgcolor="#464646" class="newfont03">
+				            <thead>
+                                <tr>
+                                <th height="20" colspan="4" style="text-align: center" class="tablestyle_title">资产分类详细内容</th>
+                                </tr>
+                            </thead>
+                        <!--Category c=(Category)request.getAttribute("category");-->
+                            <tbody th:each="category :${data}">
+				                <tr>
+				                    <td width="16%" height="20" align="right" bgcolor="#FFFFFF">资产分类编号:</td>
+				                    <td width="84%" colspan="2" bgcolor="#FFFFFF" th:text="${category.getCID()}"></td>
+				                </tr>
+                                <tr>
+						            <td width="16%" height="20" align="right" bgcolor="#FFFFFF">分类名称:</td>
+				                    <td width="84%" colspan="2" bgcolor="#FFFFFF" th:text="${category.getCNAME()}"></td>
+                                </tr>
+				            </tbody>
+				  </table>
+                    </td>
 				  </tr>
-				  <%
-									   Category c=(Category)request.getAttribute("category");			 
-									 %>
-				  <tr>
-				    <td width="16%" height="20" align="right" bgcolor="#FFFFFF">资产分类编号:</td>
-				    <td width="84%" colspan="2" bgcolor="#FFFFFF"><%=c.getCid() %></td>
-				  </tr>
-				  <tr>
-						<td width="16%" height="20" align="right" bgcolor="#FFFFFF">分类名称:</td>
-				    <td width="84%" colspan="2" bgcolor="#FFFFFF"><%=c.getCname() %></td>
-				  </tr>
-				  
-				  </table></td>
-				  </tr>
-				  </table></td>
+				  </table>
+                    </td>
 				  </tr>
 				  </table>
 				  <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
 				  <tr>
-				    <td height="6"><img src="../images/spacer.gif" width="1" height="1" /></td>
+				    <td height="6"><img src="../../static/images/spacer.gif" width="1" height="1" /></td>
 				  </tr>
 				  <tr>
 				    <td height="33"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="right-font08">

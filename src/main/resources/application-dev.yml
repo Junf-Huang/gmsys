@@ -51,9 +51,16 @@ logging:
      org.springframework.web: INFO
      com.junf.drhat: DEBUG
      org.springframework.security: INFO
+
 mybatis:
   mapper-locations: classpath:mybatis/mapper/*.xml
   config-location: classpath:mybatis/mybatis-config.xml
+
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
 
 
 
