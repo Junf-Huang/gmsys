@@ -8,5 +8,5 @@ public interface UserAccountService {
 
     public UserAccount findUserByAccount(String account);
 
-    UserAccount selectByPrimaryKey(Integer USERID);
+    public UserAccount selectByPrimaryKey(Integer USERID);
 }

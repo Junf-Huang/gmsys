@@ -2,11 +2,13 @@ package com.exercise.gmsys.controller;
 
 import com.exercise.gmsys.impl.UserAccountServiceImp;
 import com.exercise.gmsys.model.UserAccount;
-import com.exercise.gmsys.service.UserAccountService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.Mapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpSession;
 
@@ -20,8 +22,8 @@ public class UserAccountController {
     private UserAccountServiceImp userAccountServiceImp;
 
     //在浏览中通过URL调用这个方法进行登录:doLogin.do
-    @GetMapping("/doLogin")
-    public String doLogin(String account, String password, HttpSession session) {
+    @PostMapping("/doLogin")
+    public String doLogin(String account, String password, HttpSession session, Model model) {
 
         UserAccount userAccount = userAccountServiceImp.findUserByAccount(account);
 
@@ -31,12 +33,12 @@ public class UserAccountController {
             session.setAttribute("login", true);
             session.setAttribute("loginUser", userAccount);
 
-            return "redirect:index.html";
+            return "index";
         } else {
             // 登录失败，返回登录页面
             //删除登录状态，避免登录后再次登录
             session.removeAttribute("login");
-            return "redirect:login.html";
+            return "login";
         }
     }//end
 
@@ -59,14 +61,14 @@ public class UserAccountController {
         //退出，要清除用户登录状态以及登录用的信息
         session.removeAttribute("login");
         session.removeAttribute("loginUser");
-        return "redirect:login.html";
+        return "login";
     }
 
     @ResponseBody
     @GetMapping(value = "/test")
     public UserAccount test(){
         log.info("user={}",userAccountServiceImp.findUserByAccount("admin"));
-        return userAccountServiceImp.selectByPrimaryKey(1);
+        return userAccountServiceImp.findUserByAccount("admin");
     }
 }
 

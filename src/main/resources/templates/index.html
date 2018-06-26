@@ -27,7 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <header class="am-topbar am-topbar-inverse admin-header">
         <div class="am-topbar-brand">
             <a href="javascript:;" class="tpl-logo" style="margin-top: 30px;">
-                <img src="assets/img/logo.png" alt="">
+                <img src="../static/assets/img/logo.png" th:src="@{/assets/img/logo.png}" alt="">
             </a>
         </div>
         <div class="am-icon-list tpl-header-nav-hover-ico am-fl am-margin-right" style="margin-top: 35px;">
@@ -67,7 +67,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <li>
                             <a href="#" class="tpl-dropdown-content-message">
                                 <span class="tpl-dropdown-content-photo">
-                      <img src="assets/img/user02.png" alt=""> </span>
+                      <img src="../static/assets/img/user02.png" th:src="@{/assets/img/user02.png}" alt=""> </span>
                                 <span class="tpl-dropdown-content-subject">
                       <span class="tpl-dropdown-content-from"> 禁言小张 </span>
                                 <span class="tpl-dropdown-content-time">10分钟前 </span>
@@ -76,7 +76,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </a>
                             <a href="#" class="tpl-dropdown-content-message">
                                 <span class="tpl-dropdown-content-photo">
-                      <img src="assets/img/user03.png" alt=""> </span>
+                      <img src="../static/assets/img/user03.png" th:src="@{/assets/img/user03.png}" alt=""> </span>
                                 <span class="tpl-dropdown-content-subject">
                       <span class="tpl-dropdown-content-from"> Steam </span>
                                 <span class="tpl-dropdown-content-time">18分钟前</span>
@@ -134,15 +134,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
                 <li class="am-dropdown" data-am-dropdown data-am-dropdown-toggle>
                     <a class="am-dropdown-toggle tpl-header-list-link" href="javascript:;">
-                        <span class="tpl-header-list-user-nick">用户id</span><span class="tpl-header-list-user-ico"> <img src="assets/img/user01.png"></span>
+                        <span class="tpl-header-list-user-nick">用户id</span><span class="tpl-header-list-user-ico"> <img src="../static/assets/img/user01.png" th:src="@{/assets/img/user01.png}"></span>
                     </a>
                     <ul class="am-dropdown-content">
                         <li><a href="#"><span class="am-icon-bell-o"></span> 资料</a></li>
                         <li><a href="#"><span class="am-icon-cog"></span> 设置</a></li>
-                        <li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>
+                        <li><a href="/doLogout"><span class="am-icon-power-off"></span> 退出</a></li>
                     </ul>
                 </li>
-                <li><a href="###" class="tpl-header-list-link"><span class="am-icon-sign-out tpl-header-list-ico-out-size"></span></a></li>
+                <li><a href="/doLogout" class="tpl-header-list-link"><span class="am-icon-sign-out tpl-header-list-ico-out-size"></span></a></li>
             </ul>
         </div>
     </header>
@@ -180,7 +180,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <span>部门设置</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>
                                 </a>
-                                <a href="../files/addzc.jsp">
+                                <a href="../templates/files/addzc.html">
                                      <i class="am-icon-angle-right"></i>
                                         <span>资产录入</span>
                                      <i class="tpl-left-nav-content tpl-badge-primary"></i>
@@ -299,7 +299,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 
-<%--内容 --%>
+<!--内容-->
         <div class="tpl-content-wrapper">
 
 
@@ -307,7 +307,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     <script th:src="@{/assets/js/jquery.min.js}" src="/static/assets/js/jquery.min.js"></script>
     <script th:src="@{/assets/js/amazeui.min.js}" src="/static/assets/js/amazeui.min.js"></script>
-    <script th:src="@{/assets/js/iscroll.js}"src="/static/assets/js/iscroll.js"></script>
+    <script th:src="@{/assets/js/iscroll.js}" src="/static/assets/js/iscroll.js"></script>
     <script th:src="@{/assets/js/app.js}" src="/static/assets/js/app.js"></script>
 </body>
 
