@@ -69,6 +69,7 @@ function link(){
     document.getElementById("fom").action="xuqiumingxi.html";
    document.getElementById("fom").submit();
 }
+
 </SCRIPT>
 <body data-type="index">
 
@@ -138,27 +139,38 @@ function link(){
             </div>
 
             <div class="am-cf am-margin">
-                共<span class="right-text09"> 5 </span>页 | 第<span class="right-text09"> 1 </span>页
+                共<span class="right-text09" th:text="${totalPages}"> 5 </span>页 | 第<span class="right-text09" th:text="${pageNum}"> 1 </span>页
                 <div class="am-fr">
                     <ul class="am-pagination">
-                        <li><a href="#">首页</a></li>
-                        <li><a href="#">上一页</a></li>
-                        <li><a href="#">下一页</a></li>
-                        <li><a href="#">末页</a></li>
+                        <li><a th:href="@{${'/category/findAll'}(pageNum=1,pageSize=${pageSize})}">首页</a></li>
+                        <li><a th:if="${isFirstPage}" href="javascript:void(0);">上一页</a></li>
+                        <li><a th:if="${not isFirstPage}" th:href="@{${'/category/findAll'}(pageNum=${pageNum-1},pageSize=${pageSize})}">上一页</a></li>
+                        <li><a th:if="${isLastPage}" href="javascript:void(0);">下一页</a></li>
+                        <li><a th:if="${not isLastPage}" th:href="@{${'/category/findAll'}(pageNum=${pageNum+1},size=${pageSize})}">下一页</a></li>
+                        <li><a th:href="@{${'/category/findAll'}(pageNum=${totalPages},pageSize=${pageSize})}">末页</a></li>
                     </ul>
                     跳转至:&emsp;
-                    <input name="textfield3" type="text" size="1"/>&emsp;
-                    <input name="Submit23222" type="submit" class="am-btn-sm am-btn-secondary" value="GO" />
+                    <input name="textfield3" type="text" size="1" id="num"/>&emsp;
+                    <a id="pageNum" href="#" >Go</a>
                 </div>
             </div>
 
         </div>
 
 
+
     <script th:src="@{/assets/js/jquery.min.js}" src="../../static/assets/js/jquery.min.js"></script>
     <script th:src="@{/assets/js/amazeui.min.js}" src="../../static/assets/js/amazeui.min.js"></script>
     <script th:src="@{/assets/js/iscroll.js}" src="../../static/assets/js/iscroll.js"></script>
     <script th:src="@{/assets/js/app.js}" src="../../static/assets/js/app.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#pageNum").on('click',function (event) {
+            var num = $('#num').val();
+            $('#pageNum').attr('href','/category/findAll?pageNum='+num);
+        });
+    });
+</script>
 </body>
 
 </html>
