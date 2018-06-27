@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.exercise.gmsys.mapper.AreaMapper">
+  <resultMap id="BaseResultMap" type="com.exercise.gmsys.model.Area">
+    <id column="AREAID" jdbcType="INTEGER" property="AREAID" />
+    <result column="AREANAME" jdbcType="VARCHAR" property="AREANAME" />
+    <result column="RELATIVE" jdbcType="INTEGER" property="RELATIVE" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    AREAID, AREANAME, RELATIVE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from area
+    where AREAID = #{AREAID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from area
+    where AREAID = #{AREAID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.exercise.gmsys.model.Area">
+    insert into area (AREAID, AREANAME, RELATIVE
+      )
+    values (#{AREAID,jdbcType=INTEGER}, #{AREANAME,jdbcType=VARCHAR}, #{RELATIVE,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.exercise.gmsys.model.Area">
+    insert into area
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="AREAID != null">
+        AREAID,
+      </if>
+      <if test="AREANAME != null">
+        AREANAME,
+      </if>
+      <if test="RELATIVE != null">
+        RELATIVE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="AREAID != null">
+        #{AREAID,jdbcType=INTEGER},
+      </if>
+      <if test="AREANAME != null">
+        #{AREANAME,jdbcType=VARCHAR},
+      </if>
+      <if test="RELATIVE != null">
+        #{RELATIVE,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.exercise.gmsys.model.Area">
+    update area
+    <set>
+      <if test="AREANAME != null">
+        AREANAME = #{AREANAME,jdbcType=VARCHAR},
+      </if>
+      <if test="RELATIVE != null">
+        RELATIVE = #{RELATIVE,jdbcType=INTEGER},
+      </if>
+    </set>
+    where AREAID = #{AREAID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.exercise.gmsys.model.Area">
+    update area
+    set AREANAME = #{AREANAME,jdbcType=VARCHAR},
+      RELATIVE = #{RELATIVE,jdbcType=INTEGER}
+    where AREAID = #{AREAID,jdbcType=INTEGER}
+  </update>
+</mapper>

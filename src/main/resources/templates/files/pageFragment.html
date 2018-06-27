@@ -10,3 +10,9 @@
             <include refid="Base_Column_List" />
             from category
         </select>
+
+
+        <tbody th:each="category :${data}">
+        <tr>
+            <td th:text="${category.getCID()}"></td>
+            <td th:text="${category.getCNAME()}"></td>

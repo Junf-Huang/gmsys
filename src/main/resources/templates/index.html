@@ -6,11 +6,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Amaze UI Admin index Examples</title>
-    <meta name="description" content="这是一个 index 页面">
-    <meta name="keywords" content="index">
-    <meta name="renderer" content="webkit">
     <link rel="icon" type="image/png" th:href="@{/assets/i/favicon.png}" href="/static/assets/i/favicon.png">
     <link rel="apple-touch-icon-precomposed" th:href="@{/assets/i/app-icon72x72@2x.png}" href="/static/assets/i/app-icon72x72@2x.png">
     <meta name="apple-mobile-web-app-title" content="Amaze UI" />
@@ -26,15 +24,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div th:fragment="header">
     <header class="am-topbar am-topbar-inverse admin-header">
         <div class="am-topbar-brand">
-            <a href="javascript:;" class="tpl-logo" style="margin-top: 30px;">
+            <a href="javascript:;" class="tpl-logo">
                 <img src="../static/assets/img/logo.png" th:src="@{/assets/img/logo.png}" alt="">
             </a>
         </div>
-        <div class="am-icon-list tpl-header-nav-hover-ico am-fl am-margin-right" style="margin-top: 35px;">
+        <span class="am-icon-list tpl-header-nav-hover-ico am-fl am-margin-right">
+        </span>
 
-        </div>
-
-        <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#topbar-collapse'}" ><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+        <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#topbar-collapse'}" >
+            <span class="am-sr-only">导航切换</span>
+            <span class="am-icon-bars"></span>
+        </button>
 
         <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
 
@@ -155,7 +155,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
     <div class="tpl-page-container tpl-page-header-fixed" th:fragment="list">
-
 
         <div class="tpl-left-nav tpl-left-nav-hover">
             <div class="tpl-left-nav-title">
@@ -299,10 +298,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 
-
 <!--内容-->
         <div class="tpl-content-wrapper">
-
 
         </div>
 

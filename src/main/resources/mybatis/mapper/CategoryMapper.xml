@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.exercise.gmsys.mapper.CategoryMapper">
+  <resultMap id="BaseResultMap" type="com.exercise.gmsys.model.Category">
+    <id column="CID" jdbcType="INTEGER" property="CID" />
+    <result column="CNAME" jdbcType="VARCHAR" property="CNAME" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    CID, CNAME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from category
+    where CID = #{CID,jdbcType=INTEGER}
+  </select>
+
+  <select id="findAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from category
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from category
+    where CID = #{CID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.exercise.gmsys.model.Category">
+    insert into category (CID, CNAME)
+    values (#{CID,jdbcType=INTEGER}, #{CNAME,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.exercise.gmsys.model.Category">
+    insert into category
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="CID != null">
+        CID,
+      </if>
+      <if test="CNAME != null">
+        CNAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="CID != null">
+        #{CID,jdbcType=INTEGER},
+      </if>
+      <if test="CNAME != null">
+        #{CNAME,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.exercise.gmsys.model.Category">
+    update category
+    <set>
+      <if test="CNAME != null">
+        CNAME = #{CNAME,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CID = #{CID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.exercise.gmsys.model.Category">
+    update category
+    set CNAME = #{CNAME,jdbcType=VARCHAR}
+    where CID = #{CID,jdbcType=INTEGER}
+  </update>
+</mapper>

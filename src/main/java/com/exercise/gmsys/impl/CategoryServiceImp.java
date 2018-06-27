@@ -18,6 +18,7 @@ public class CategoryServiceImp {
 
     public List<Category> findAll(int pageNum, int pageSize){
 
+        //对其后的第一个查询分页
         PageHelper.startPage(pageNum, pageSize);
         return categoryMapper.findAll();
     }

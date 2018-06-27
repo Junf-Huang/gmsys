@@ -29,6 +29,7 @@ public class UserAccountController {
         UserAccount userAccount = userAccountService.selectByPrimaryKey(3);
 
         log.info("loginName={}", userAccount.getACCOUNTS());
+        log.info("loginPassword={}", password);
         log.info("password={}", userAccount.getPASSWORD());
         if (userAccount != null && userAccount.getPASSWORD().equals(password)) {
             // 登录成功，进入到管理界面

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.exercise.gmsys.mapper.DepartmentMapper">
+  <resultMap id="BaseResultMap" type="com.exercise.gmsys.model.Department">
+    <id column="DEPARTID" jdbcType="INTEGER" property="DEPARTID" />
+    <result column="DEPARTNAME" jdbcType="VARCHAR" property="DEPARTNAME" />
+    <result column="AREAID" jdbcType="INTEGER" property="AREAID" />
+    <result column="AREANAME" jdbcType="VARCHAR" property="AREANAME" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    DEPARTID, DEPARTNAME, AREAID, AREANAME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from department
+    where DEPARTID = #{DEPARTID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from department
+    where DEPARTID = #{DEPARTID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.exercise.gmsys.model.Department">
+    insert into department (DEPARTID, DEPARTNAME, AREAID, 
+      AREANAME)
+    values (#{DEPARTID,jdbcType=INTEGER}, #{DEPARTNAME,jdbcType=VARCHAR}, #{AREAID,jdbcType=INTEGER}, 
+      #{AREANAME,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.exercise.gmsys.model.Department">
+    insert into department
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="DEPARTID != null">
+        DEPARTID,
+      </if>
+      <if test="DEPARTNAME != null">
+        DEPARTNAME,
+      </if>
+      <if test="AREAID != null">
+        AREAID,
+      </if>
+      <if test="AREANAME != null">
+        AREANAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="DEPARTID != null">
+        #{DEPARTID,jdbcType=INTEGER},
+      </if>
+      <if test="DEPARTNAME != null">
+        #{DEPARTNAME,jdbcType=VARCHAR},
+      </if>
+      <if test="AREAID != null">
+        #{AREAID,jdbcType=INTEGER},
+      </if>
+      <if test="AREANAME != null">
+        #{AREANAME,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.exercise.gmsys.model.Department">
+    update department
+    <set>
+      <if test="DEPARTNAME != null">
+        DEPARTNAME = #{DEPARTNAME,jdbcType=VARCHAR},
+      </if>
+      <if test="AREAID != null">
+        AREAID = #{AREAID,jdbcType=INTEGER},
+      </if>
+      <if test="AREANAME != null">
+        AREANAME = #{AREANAME,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where DEPARTID = #{DEPARTID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.exercise.gmsys.model.Department">
+    update department
+    set DEPARTNAME = #{DEPARTNAME,jdbcType=VARCHAR},
+      AREAID = #{AREAID,jdbcType=INTEGER},
+      AREANAME = #{AREANAME,jdbcType=VARCHAR}
+    where DEPARTID = #{DEPARTID,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -20,10 +20,10 @@ public class BasciDataController {
     CategoryServiceImp categoryServiceImp;
 
     @GetMapping("/category/findAll")
-    @ResponseBody
-    public String findAll(@RequestParam(value = "pageNum",defaultValue = "1") Integer pageNum, Integer pageSize, Model model){
-        model.addAttribute("data", categoryServiceImp.findAll(1,1));
-        //return "files/zcfldetails";
-        return  categoryServiceImp.findAll(1,1).toString();
+    public String findAll(@RequestParam(value = "pageNum",defaultValue = "1") Integer pageNum, @RequestParam(defaultValue = "2")Integer pageSize, Model model){
+        //pageNum为第几页，pageSize为每页记录条数
+        model.addAttribute("data", categoryServiceImp.findAll(pageNum, pageSize));
+        return "files/zcfldetails";
+       // return  categoryServiceImp.findAll(pageNum, pageSize).toString();
     }
 }
