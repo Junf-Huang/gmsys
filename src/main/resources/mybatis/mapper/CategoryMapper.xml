@@ -21,6 +21,13 @@
     from category
   </select>
 
+  <select id="findByKeyword" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from category
+    WHERE CNAME LIKE "%"#{keyword}"%"
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from category
     where CID = #{CID,jdbcType=INTEGER}

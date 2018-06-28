@@ -17,11 +17,30 @@ public class CategoryServiceImp {
     @Autowired
     CategoryMapper categoryMapper;
 
-    public PageInfo<Category> findAll(int pageNum, int pageSize){
+    public List<Category> findAll(){
 
-        //对其后的第一个查询分页
-        PageHelper.startPage(pageNum, pageSize);
-        return new PageInfo<>(categoryMapper.findAll());
+        return categoryMapper.findAll();
+    }
+
+    public Category findById(Integer cid){
+        return categoryMapper.selectByPrimaryKey(cid);
+    }
+
+    public void update(Category category){
+        categoryMapper.updateByPrimaryKey(category);
+    }
+
+    public void insert(Category category){
+        categoryMapper.insert(category);
+    }
+
+    public void delete(Integer CID) {
+        categoryMapper.deleteByPrimaryKey(CID);
+    }
+
+    public List<Category> findByKeyword(String keyword) {
+
+        return categoryMapper.findByKeyword(keyword);
     }
 
 }

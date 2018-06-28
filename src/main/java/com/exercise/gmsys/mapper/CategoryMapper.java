@@ -22,4 +22,7 @@ public interface CategoryMapper {
     int updateByPrimaryKey(Category record);
 
     List<Category> findAll();
+
+    List<Category> findByKeyword(String keyword);
+
 }
