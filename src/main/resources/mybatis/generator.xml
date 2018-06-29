@@ -60,33 +60,13 @@
         <!-- schema即为数据库名 tableName为对应的数据库表 domainObjectName是要生成的实体类 enable*ByExample
             是否生成 example类 -->
 
-        <table tableName="useraccount"
-               domainObjectName="UserAccount" enableCountByExample="false"
+        <table tableName="balance"
+               domainObjectName="Asset" enableCountByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                enableUpdateByExample="false">
             <!-- 生成的bean的属性不采用驼峰-->
             <property name="useActualColumnNames" value="true"/>
         </table>
-        <table tableName="category"
-               domainObjectName="Category" enableCountByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               enableUpdateByExample="false">
-            <!-- 生成的bean的属性不采用驼峰-->
-            <property name="useActualColumnNames" value="true"/>
-        </table>
-        <table tableName="department"
-               domainObjectName="Department" enableCountByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               enableUpdateByExample="false">
-            <!-- 生成的bean的属性不采用驼峰-->
-            <property name="useActualColumnNames" value="true"/>
-        </table>
-        <table tableName="area"
-               domainObjectName="Area" enableCountByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               enableUpdateByExample="false">
-            <!-- 生成的bean的属性不采用驼峰-->
-            <property name="useActualColumnNames" value="true"/>
-        </table>
+
     </context>
 </generatorConfiguration>

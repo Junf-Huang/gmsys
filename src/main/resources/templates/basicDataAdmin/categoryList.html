@@ -80,13 +80,15 @@ function del(){
         return;
     }
     $("#delete").attr("href", "/category/delete?cid=" +paramUrl );
-    //document.getElementById("delete").action="/category/delete?cid="+paramUrl;
     console.log("href",$('#delete').attr("href"));
-    /* console.log("${pageContext.request.contextPath}/category/delete.action?cid="+paramUrl);
-    document.location.href="${pageContext.request.contextPath}/category/delete.do?cid="+paramUrl; */
-
-
 }
+
+function go() {
+    console.log("redirectPage:"+$('#num').val());
+    var num = $('#num').val();
+    $('#pageNum').attr('href','/category/list?pageNum='+num);
+}
+
 </SCRIPT>
 <body data-type="index">
 
@@ -97,9 +99,6 @@ function del(){
 <div th:replace="index::list">
 </div>
 
-
-<!--内容-->
-
         <div class="admin-content am-padding-left" style="background-color: #E9ECF3">
             <div style="background-color: #FFFFFF; border-radius: 6px" class="am-padding ">
             <div class="am-g" >
@@ -107,7 +106,7 @@ function del(){
             <div class="am-u-sm-12 am-u-md-8">
                 <div class="am-btn-toolbar">
                     <div class="am-btn-group am-btn-group-xs">
-                        <a type="button" class="am-btn am-btn-default am-margin-right" th:href="@{/addCategory}"><span class="am-icon-plus"></span> 新增</a>
+                        <a type="button" class="am-btn am-btn-default am-margin-right" th:href="@{/categoryAdd}"><span class="am-icon-plus"></span> 新增</a>
                         <a type="button" class="am-btn am-btn-default" onclick="del();" id="delete"><span class="am-icon-trash-o"></span> 删除</a>
                     </div>
                 </div>
@@ -115,11 +114,9 @@ function del(){
             <div class="am-u-sm-12 am-u-md-4" >
                 <form th:action="@{/category/list}">
                     <div class="am-input-group am-input-group-sm">
-                        <label >
                             <input class="am-form-field" type="text" name="keyword" placeholder="Search asset">
-                        </label>
                         <span class="am-input-group-btn">
-                        <input class="am-btn am-btn-default" type="submit">搜索</input>
+                        <input class="am-btn am-btn-default" type="submit" value="搜索">搜索</input>
                         </span>
                     </div>
                 </form>
@@ -139,7 +136,7 @@ function del(){
                             <tbody id="content">
                             <tr th:each="category :${data}">
                                 <td><input type="checkbox" name='checkbox' th:value="${category.getCID()}"/></td>
-                                <td name="delete" th:text="${category.getCID()}">Business management</td>
+                                <td th:text="${category.getCID()}">Business management</td>
                                 <td th:text="${category.getCNAME()}">default</td>
                                 <td>
                                     <div class="am-btn-toolbar">
@@ -180,8 +177,8 @@ function del(){
                         <li><a th:href="@{${'/category/list'}(pageNum=${totalPages}, keyword=${keyword})}">末页</a></li>
                     </ul>
                     跳转至:&emsp;
-                    <input name="textfield3" type="text" size="1" id="num"/>&emsp;
-                    <a class="pageNum" href="#" >Go</a>
+                    <label for="num"></label><input name="textfield3" type="text" size="1" id="num"/>&emsp;
+                    <a id="pageNum" type="button" onclick="go()">Go</a>
                 </div>
 
                     <div class="am-pagination" th:if="${keyword} != null">
@@ -199,14 +196,7 @@ function del(){
     <script th:src="@{/assets/js/amazeui.min.js}" src="../../static/assets/js/amazeui.min.js"></script>
     <script th:src="@{/assets/js/iscroll.js}" src="../../static/assets/js/iscroll.js"></script>
     <script th:src="@{/assets/js/app.js}" src="../../static/assets/js/app.js"></script>
-<script>
-    $(document).ready(function(){
-        $(".pageNum").on('click',function (event) {
-            var num = $('#num').val();
-            $('.pageNum').attr('href','/category/list?pageNum='+num);
-        });
-    });
-</script>
+
 </body>
 
 </html>

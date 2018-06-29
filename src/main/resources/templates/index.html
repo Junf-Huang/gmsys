@@ -175,12 +175,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <span>资产分类设置</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>
                                 </a>
-                                <a href="/department/findAll" th:href="@{/department/findAll}">
+                                <a href="/department/list" th:href="@{/department/list}">
                                     <i class="am-icon-angle-right"></i>
                                     <span>部门设置</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>
                                 </a>
-                                <a href="../templates/files/addzc.html" >
+                                <a th:href="@{/assetAdd}" >
                                      <i class="am-icon-angle-right"></i>
                                         <span>资产录入</span>
                                      <i class="tpl-left-nav-content tpl-badge-primary"></i>

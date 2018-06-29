@@ -1,0 +1,241 @@
+
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Amaze UI Admin index Examples</title>
+    <meta name="description" content="这是一个 index 页面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" th:href="@{/assets/i/favicon.png}" href="/static/assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" th:href="@{/assets/i/app-icon72x72@2x.png}" href="/static/assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" th:href="@{/assets/css/amazeui.min.css}" href="../../static/assets/css/amazeui.min.css"/>
+    <link rel="stylesheet" th:href="@{/assets/css/admin.css}" href="../../static/assets/css/admin.css">
+    <link rel="stylesheet" th:href="@{/assets/css/app.css}" href="../../static/assets/css/app.css">
+    <script th:src="@{/assets/js/echarts.min.js}" src="../../static/assets/js/echarts.min.js"></script>
+    <style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+.tabfont01 {	
+	font-family: "宋体";
+	font-size: 9px;
+	color: #555555;
+	text-decoration: none;
+	text-align: center;
+}
+.font051 {font-family: "宋体";
+	font-size: 12px;
+	color: #333333;
+	text-decoration: none;
+	line-height: 20px;
+}
+.font201 {font-family: "宋体";
+	font-size: 12px;
+	color: #FF0000;
+	text-decoration: none;
+}
+.button {
+	font-family: "宋体";
+	font-size: 14px;
+	height: 37px;
+}
+html { overflow-x: auto; overflow-y: auto; border:0;} 
+-->
+</style>
+
+    <link href="../../static/css/css.css" th:href="@{/css/css.css}" rel="stylesheet" type="text/css" />
+<script type="text/JavaScript">
+
+</script>
+    <link rel="stylesheet" rev="stylesheet" href="../../static/css/style.css" th:href="@{/css/style.css}" type="text/css" media="all" />
+</head>
+<SCRIPT language=JavaScript>
+function sousuo(){
+	window.open("<%=path%>/files/gaojisousuo.htm","","depended=0,alwaysRaised=1,width=800,height=510,location=0,menubar=0,resizable=0,scrollbars=0,status=0,toolbar=0");
+}
+function selectAll(){
+	var obj = document.fom.elements;
+	for (var i=0;i<obj.length;i++){
+		if (obj[i].name == "areaid"){
+			obj[i].checked = true;
+		}
+	}
+}
+
+function unselectAll(){
+	var obj = document.fom.elements;
+	for (var i=0;i<obj.length;i++){
+		if (obj[i].name == "areaid"){
+			if (obj[i].checked==true) obj[i].checked = false;
+			else obj[i].checked = true;
+		}
+	}
+}
+
+
+function deleteArea(){
+	
+	if(confirm("确定删除？")){
+	   document.getElementById("fom").action="../area/delete.do";
+	   document.getElementById("fom").submit();
+	}
+}
+
+function link(){
+  //  document.getElementById("fom").action="addquyu.htm";
+   //document.getElementById("fom").submit();
+   location.href="<%=path%>/files/addquyu.htm"
+}
+
+/*批量删除*/
+function del(){
+
+    var length = $('#content tr').length;
+    console.log("length:"+length);
+    var  paramUrl="";
+
+    $(":checkbox:checked").each(function(){
+        //要在checkbox那里设置value
+        var id = $(this).val();
+        console.log("cid:"+id);
+        paramUrl += id+",";
+    });
+
+    console.log("paramUrl:"+paramUrl);
+    if(paramUrl==""){
+        alert("请删除要选中的项目");
+        return;
+    }
+    if(paramUrl=="1:"){
+        alert("这个外键删不了 ，别删了，删其他的吧");
+        return;
+    }
+    $("#delete").attr("href", "/area/delete?id=" +paramUrl );
+    console.log("href",$('#delete').attr("href"));
+
+}
+function go() {
+    console.log("redirectPage:"+$('#num').val());
+    var num = $('#num').val();
+    $('#pageNum').attr('href','/area/list?pageNum='+num);
+}
+
+</SCRIPT>
+<body data-type="index">
+<div th:replace="index::header">
+</div>
+
+<div th:replace="index::list">
+</div>
+
+<div class="admin-content am-padding-left" style="background-color: #E9ECF3">
+    <div style="background-color: #FFFFFF; border-radius: 6px" class="am-padding ">
+        <div class="am-g" >
+
+            <div class="am-u-sm-12 am-u-md-8">
+                <div class="am-btn-toolbar">
+                    <div class="am-btn-group am-btn-group-xs">
+                        <a type="button" class="am-btn am-btn-default am-margin-right" th:href="@{/areaAdd}"><span class="am-icon-plus"></span> 新增</a>
+                        <a type="button" class="am-btn am-btn-default" onclick="del();" id="delete"><span class="am-icon-trash-o"></span> 删除</a>
+                    </div>
+                </div>
+            </div>
+            <div class="am-u-sm-12 am-u-md-4" >
+                <form th:action="@{/area/list}">
+                    <div class="am-input-group am-input-group-sm">
+                            <input class="am-form-field" type="text" name="keyword" placeholder="部门编号">
+                        <span class="am-input-group-btn">
+                        <input class="am-btn am-btn-default" type="submit">搜索</input>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="am-g">
+            <div class="am-u-sm-12">
+                <form class="am-form">
+                    <table class="am-table am-table-hover table-main">
+                        <thead>
+                        <tr><th colspan="5" style="text-align: center">区域详细列表</th></tr>
+                        <tr>
+                            <th class="table-id">选择</th>
+                            <th class="table-title">区域编号</th>
+                            <th class="table-type">区域名称</th>
+                            <th class="table-type">上级关联</th>
+                            <th class="table-set">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody id="content">
+                        <tr th:each="area :${data}">
+                            <td><input type="checkbox" name='checkbox' th:value="${area.getAREAID()}"/></td>
+                            <td th:text="${area.getAREAID()}">Business management</td>
+                            <td th:text="${area.getAREANAME()}">Business management</td>
+                            <td th:text="${area.getRELATIVE()}">Business management</td>
+                            <td>
+                                <div class="am-btn-toolbar">
+                                    <div class="am-btn-group am-btn-group-xs">
+                                        <a class="am-btn am-btn-default am-margin-right" th:href="@{/area/findById/(aid=${area.getAREAID()})}">编辑</a>
+                                        <a class="am-btn am-btn-default  " th:href="@{/area/findOne/(aid=${area.getAREAID()})}">查看</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="am-cf am-margin">
+        共<span class="right-text09" th:text="${totalPages}"> 5 </span>页 | 第<span class="right-text09" th:text="${pageNum}"> 1 </span>页
+        <div class="am-fr">
+            <ul class="am-pagination" th:if="${keyword} == null">
+                <li><a th:href="@{${'/area/list'}(pageNum=1,pageSize=${pageSize})}">首页</a></li>
+                <li><a th:if="${isFirstPage}" href="javascript:void(0);">上一页</a></li>
+                <li><a th:if="${not isFirstPage}" th:href="@{${'/area/list'}(pageNum=${pageNum-1})}">上一页</a></li>
+                <li><a th:if="${isLastPage}" href="javascript:void(0);">下一页</a></li>
+                <li><a th:if="${not isLastPage}" th:href="@{${'/area/list'}(pageNum=${pageNum+1})}">下一页</a></li>
+                <li><a th:href="@{${'/area/list'}(pageNum=${totalPages})}">末页</a></li>
+
+            </ul>
+            <ul class="am-pagination" th:if="${keyword} != null">
+                <li><a th:href="@{${'/area/list'}(pageNum=1,pageSize=${pageSize}, keyword=${keyword})}">首页</a></li>
+                <li><a th:if="${isFirstPage}" href="javascript:void(0);">上一页</a></li>
+                <li><a th:if="${not isFirstPage}" th:href="@{${'/area/list'}(pageNum=${pageNum-1}, keyword=${keyword})}">上一页</a></li>
+                <li><a th:if="${isLastPage}" href="javascript:void(0);">下一页</a></li>
+                <li><a th:if="${not isLastPage}" th:href="@{${'/area/list'}(pageNum=${pageNum+1}, keyword=${keyword})}">下一页</a></li>
+                <li><a th:href="@{${'/area/list'}(pageNum=${totalPages}, keyword=${keyword})}">末页</a></li>
+            </ul>
+            跳转至:&emsp;
+            <input name="textfield3" type="text" size="1" id="num"/>&emsp;
+            <a id="pageNum" type="button" onclick="go()">Go</a>
+        </div>
+
+        <div class="am-pagination" th:if="${keyword} != null">
+
+        </div>
+    </div>
+</div>
+
+</div>
+
+        <script th:src="@{/assets/js/jquery.min.js}" src="/static/assets/js/jquery.min.js"></script>
+        <script th:src="@{/assets/js/amazeui.min.js}" src="/static/assets/js/amazeui.min.js"></script>
+        <script th:src="@{/assets/js/iscroll.js}"src="/static/assets/js/iscroll.js"></script>
+        <script th:src="@{/assets/js/app.js}" src="/static/assets/js/app.js"></script>
+</body>
+
+</html>

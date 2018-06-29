@@ -16,6 +16,20 @@
     from department
     where DEPARTID = #{DEPARTID,jdbcType=INTEGER}
   </select>
+
+  <select id="findAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from department
+  </select>
+
+  <select id="findByKeyword" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from department
+    WHERE DEPARTID LIKE "%"#{keyword}"%"
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from department
     where DEPARTID = #{DEPARTID,jdbcType=INTEGER}
