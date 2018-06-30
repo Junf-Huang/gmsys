@@ -1,9 +1,13 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<!--<%@page import="java.util.Iterator"%>
+<%@page import="com.neuedu.model.Product"%>
+<%@page import="java.util.List" isELIgnored="false"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="b"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+%>-->
 
 <!doctype html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
@@ -58,11 +62,11 @@ html { overflow-x: auto; overflow-y: auto; border:0;}
 -->
 </style>
 
-<link href="../css/css.css" rel="stylesheet" type="text/css" />
+    <link href="../../static/css/css.css" th:href="@{/css/css.css}" rel="stylesheet" type="text/css" />
 <script type="text/JavaScript">
 
 </script>
-<link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" rev="stylesheet" href="../../static/css/style.css" th:href="@{/css/style.css}" type="text/css" media="all" />
 </head>
 <SCRIPT language=JavaScript>
 function sousuo(){
@@ -88,7 +92,7 @@ function unselectAll(){
 }
 
 function link(){
-    document.getElementById("fom").action="adddbaofei.htm";
+    document.getElementById("fom").action="addproduct.htm";
    document.getElementById("fom").submit();
 }
 
@@ -268,7 +272,7 @@ function link(){
                             <span>资产管理</span>
                             <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
                         </a>
-    			<ul class="tpl-left-nav-sub-menu" style="display:block">
+    			<ul class="tpl-left-nav-sub-menu">
                             <li>
                                 <a href="${pageContext.request.contextPath}/buy/findAll.do">
                                     <i class="am-icon-angle-right"></i>
@@ -287,7 +291,7 @@ function link(){
                                      <i class="am-icon-angle-right"></i>
                                      <span>报修管理</span>
                                 </a>
-								<a href="${pageContext.request.contextPath}/buyProuduct/findAll4.do" class="active">
+								<a href="${pageContext.request.contextPath}/buyProuduct/findAll4.do">
                                      <i class="am-icon-angle-right"></i>
                                      <span>报废管理</span>
                                 </a>
@@ -320,7 +324,7 @@ function link(){
                                      <i class="am-icon-angle-right"></i>
                                      <span>报修记录</span>
                                 </a>
-				<a href="${pageContext.request.contextPath}/bfjl/findAll.do">
+								<a href="${pageContext.request.contextPath}/bfjl/findAll.do">
                                      <i class="am-icon-angle-right"></i>
                                      <span>报废记录</span>
                                 </a>
@@ -334,14 +338,14 @@ function link(){
                             <span>供应商管理</span>
                             <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
                         </a>
-                        <ul class="tpl-left-nav-sub-menu">
+                        <ul class="tpl-left-nav-sub-menu" style="display:block">
                             <li>
-                                <a href="table-font-list.html">
+                                <a href="${pageContext.request.contextPath}/provider/findAll.do">
                                     <i class="am-icon-angle-right"></i>
                                     <span>供应商信息查看</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>
                                 </a>
-                                <a href="table-images-list.html">
+                                <a href="${pageContext.request.contextPath}/product/findAll.do" class="active">
                                     <i class="am-icon-angle-right"></i>
                                     <span>产品信息查看</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>
@@ -365,23 +369,22 @@ function link(){
 
 <%--内容 --%>
         <div class="tpl-content-wrapper">
-            
             <form name="fom" id="fom" method="post">
 				<table width="100%" border="0" cellspacing="0" cellpadding="0">
 				
 				  <tr>
-				    <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+				    <td height="30">      <table width="100%" border="0" cellspacing="0" cellpadding="0">
 				        <tr>
 				          <td height="62" background="../images/nav04.gif">
 				            
 						   <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
 						    <tr>
 							  <td width="24"><img src="../images/ico07.gif" width="20" height="18" /></td>
-							  <td width="519"><label>报废编号:
+							  <td width="519"><label>产品编号:
 							      <input name="text" type="text" nam="gongs" />
 							  </label>
-							   
-							    <input name="Submit" type="button" class="right-button02" value="查询" /></td>
+							    </input>
+							    <input name="Submit" type="button" class="right-button02" value="查 询" /></td>
 							   <td width="679" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>	
 						    </tr>
 				          </table></td>
@@ -391,54 +394,59 @@ function link(){
 				    <td><table id="subtree1" style="DISPLAY: " width="100%" border="0" cellspacing="0" cellpadding="0">
 				        <tr>
 				          <td><table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
-				          	 <tr>
+				          	<!--  <tr>
 				               <td height="20"><span class="newfont07">选择：<a href="#" class="right-font08" onclick="selectAll();">全选</a>-<a href="#" class="right-font08" onclick="unselectAll();">反选</a></span>
-						           <input name="Submit" type="button" class="right-button08" value="删除所选报修信息" /> 
-				               <input name="Submit" type="button" class="right-button08" value="添加报修信息" onclick="link();" />
+						           <input name="Submit" type="button" class="right-button08" value="删除所选产品信息" /> <input name="Submit" type="button" class="right-button08" value="添加产品信息" onclick="link();" />
 						           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 					              </td>
-				          </tr>
+				          </tr> -->
 				              <tr>
 				                <td height="40" class="font42"><table width="100%" border="0" cellpadding="4" cellspacing="1" bgcolor="#464646" class="newfont03">
 				
 									                  <tr>
-				                    <td height="20" colspan="14" align="center" bgcolor="#EEEEEE"class="tablestyle_title"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;报废详细列表 &nbsp;</td>
+				                    <td height="20" colspan="14" align="center" bgcolor="#EEEEEE"class="tablestyle_title"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;产品详细列表 &nbsp;</td>
 				                    </tr>
+				                  <tr>
+								    <td width="8%" align="center" bgcolor="#EEEEEE">选择</td>
+				            <td width="12%" height="20" align="center" bgcolor="#EEEEEE">产品编号</td>
+									 <td width="12%" height="20" align="center" bgcolor="#EEEEEE">产品名称</td>
+				           <td width="10%" align="center" bgcolor="#EEEEEE">数量</td>
+				            <td width="10%" align="center" bgcolor="#EEEEEE">价格</td>
+				           <td width="10%" align="center" bgcolor="#EEEEEE">供应商编号</td>
+				
+				          <td width="11%" align="center" bgcolor="#EEEEEE">操作</td> 
+				          </tr>
 				                 
-				            <tr>
-				            <td width="8%" align="center" bgcolor="#EEEEEE">选择</td>
-				            <td width="12%" height="20" align="center" bgcolor="#EEEEEE">报废编号</td>
-				            <td width="12%" height="20" align="center" bgcolor="#EEEEEE">报废数量</td>
-				            <td width="12%" height="20" align="center" bgcolor="#EEEEEE">报废时间</td>
-				             <td width="12%" height="20" align="center" bgcolor="#EEEEEE">资产编号</td>
-				            <td width="12%" height="20" align="center" bgcolor="#EEEEEE">部门编号</td>
+				                 
+				                 
+				               <%
+				              		List<Product> list=(List<Product>)request.getAttribute("listProduct");
+				              		Iterator<Product> it=list.iterator();
+				              		System.out.println("+++++++++");
+				              		while(it.hasNext()){
+				              	
+				              			Product v=it.next();
+				              	%>  
+				                 
+				                 
+				                  <tr>
 				
-				            <td width="11%" align="center" bgcolor="#EEEEEE">操作</td>
-				           </tr>
-				           
-				           <c:forEach items="${listBuy4}" var="c">
-				           
-				           <tr>
-				
-				                    <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td>
-				                    <td bgcolor="#FFFFFF">${c.sID }</td>
-				                    <td bgcolor="#FFFFFF">${c.sCOUNT }</td>
-				                    <td bgcolor="#FFFFFF">${c.sTIME }</td>
-				                    <td bgcolor="#FFFFFF">${c.bID }</td>
-				                    <td bgcolor="#FFFFFF">${c.dEPARTID }</td>
-				                    <td bgcolor="#FFFFFF"><a href="updatebaofei.html">编辑</a>&nbsp;|&nbsp;<a href="baofeidetails.html">查看</a></td>
-				           </tr> 
-				           </c:forEach>
-				           
+								            <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td>
+				                    <td bgcolor="#FFFFFF"><%=v.getProdid() %></td>
+									          <td height="20" bgcolor="#FFFFFF"><%=v.getProdname() %></td>
+				                    <td bgcolor="#FFFFFF"><%=v.getBuycount() %></td>
+				                     <td bgcolor="#FFFFFF"><%=v.getProdcount() %></td>
+				                    <td height="20" bgcolor="#FFFFFF"><%=v.getProvid() %></td>
+				                    
+									         <td bgcolor="#FFFFFF"><a href="addproduct.htm">编辑</a>&nbsp;|&nbsp;<a href="productdetails.html">查看</a></td> 
+				                  </tr>
+				                  <%} %>
+				                
+				 
+				                </table></td>
+				              </tr>
 				            </table></td>
 				        </tr>
-				      </table>
-				
-				            </table></td>
-				        </tr>
-				      </table>
-				
-				      
 				      </table>
 				      <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
 				        <tr>
@@ -463,6 +471,7 @@ function link(){
 				  </tr>
 				</table>
 				</form>
+            
 
 
 

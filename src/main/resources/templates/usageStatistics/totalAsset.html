@@ -1,0 +1,303 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Amaze UI Admin index Examples</title>
+    <meta name="description" content="这是一个 index 页面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" th:href="@{/assets/i/favicon.png}" href="/static/assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" th:href="@{/assets/i/app-icon72x72@2x.png}" href="/static/assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" th:href="@{/assets/css/amazeui.min.css}" href="../../static/assets/css/amazeui.min.css"/>
+    <link rel="stylesheet" th:href="@{/assets/css/admin.css}" href="../../static/assets/css/admin.css">
+    <link rel="stylesheet" th:href="@{/assets/css/app.css}" href="../../static/assets/css/app.css">
+    <script th:src="@{/assets/js/echarts.min.js}" src="../../static/assets/js/echarts.min.js"></script>
+    <style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+.tabfont01 {	
+	font-family: "宋体";
+	font-size: 9px;
+	color: #555555;
+	text-decoration: none;
+	text-align: center;
+}
+.font051 {font-family: "宋体";
+	font-size: 12px;
+	color: #333333;
+	text-decoration: none;
+	line-height: 20px;
+}
+.font201 {font-family: "宋体";
+	font-size: 12px;
+	color: #FF0000;
+	text-decoration: none;
+}
+.button {
+	font-family: "宋体";
+	font-size: 14px;
+	height: 37px;
+}
+html { overflow-x: auto; overflow-y: auto; border:0;} 
+-->
+</style>
+
+    <link href="../../static/css/css.css" th:href="@{/css/css.css}" rel="stylesheet" type="text/css" />
+    <script src="../../static/js/jquery-1.11.3.js" th:src="@{/js/jquery-1.11.3.js}"></script>
+<script type="text/JavaScript">
+
+</script>
+    <link rel="stylesheet" rev="stylesheet" href="../../static/css/style.css" th:href="@{/css/style.css}" type="text/css" media="all" />
+</head>
+<SCRIPT language=JavaScript>
+function sousuo(){
+	window.open("gaojisousuo.htm","","depended=0,alwaysRaised=1,width=800,height=510,location=0,menubar=0,resizable=0,scrollbars=0,status=0,toolbar=0");
+}
+function selectAll(){
+	var obj = document.fom.elements;
+	for (var i=0;i<obj.length;i++){
+		if (obj[i].name == "delid"){
+			obj[i].checked = true;
+		}
+	}
+}
+
+function unselectAll(){
+	var obj = document.fom.elements;
+	for (var i=0;i<obj.length;i++){
+		if (obj[i].name == "delid"){
+			if (obj[i].checked==true) obj[i].checked = false;
+			else obj[i].checked = true;
+		}
+	}
+}
+
+function link(){
+    document.getElementById("fom").action="addzcfl.htm";
+   document.getElementById("fom").submit();
+}
+
+$(function(){
+	$("#chaxun").click(function() {
+		var bq= $("#text").val();
+        //alert("搜索的值为："+bq);
+        $("#fom").attr("action","${pageContext.request.contextPath}/Balance/findById.do?bid="+bq);
+        $("#fom").submit();
+    });
+});
+
+$(function(){
+	$("#chaxun2").click(function() {
+		var bq= $("#text2").val();
+        //alert("搜索的值为："+bq);
+        $("#fom").attr("action","${pageContext.request.contextPath}/Balance/findById2.do?departid="+bq);
+        $("#fom").submit();
+    });
+});
+</SCRIPT>
+<body data-type="index">
+
+
+
+        <div class="tpl-content-wrapper">
+            <form name="fom" id="fom" method="post">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				
+				  <tr>
+				    <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+				        <tr>
+				          <td height="62" background="../images/nav04.gif">
+				            
+						   <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
+						    <tr>
+							  <td width="24"><img src="../images/ico07.gif" width="20" height="18" /></td>
+							  <td width="519"><label>按资产分类编号:
+							      <input id="text" name="text" type="text" nam="gongs" />
+							  </label>
+							    </input>
+							    <input id="chaxun" name="chaxun" type="button" class="right-button02" value="统计" /></td>
+							   <td width="679" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>	
+						    </tr>
+				          </table></td>
+				        </tr>
+				    </table></td></tr>
+				  <tr>
+				    <td><table id="subtree1" style="DISPLAY: " width="100%" border="0" cellspacing="0" cellpadding="0">
+				        <tr>
+				          <td><table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
+				          	 
+				              <tr>
+				                <td height="40" class="font42"><table width="100%" border="0" cellpadding="4" cellspacing="1" bgcolor="#464646" class="newfont03">
+				
+									        <tr>
+				                    <td height="20" colspan="14" align="center" bgcolor="#EEEEEE"class="tablestyle_title"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;资产详细列表 &nbsp;</td>
+				                    </tr>
+				                  <tr>
+								   
+				            <td width="12%" height="20" align="center" bgcolor="#EEEEEE">资产分类编号</td>
+									 <td width="12%" height="20" align="center" bgcolor="#EEEEEE">分类名称</td>
+				           <td width="12%" height="20" align="center" bgcolor="#EEEEEE">资产名称</td>
+				           <td width="12%" height="20" align="center" bgcolor="#EEEEEE">数量</td>
+				           <td width="12%" height="20" align="center" bgcolor="#EEEEEE">价格</td>        
+				                
+				           </tr>
+				           
+				           <%
+				              		List<Balance> list=(List<Balance>)request.getAttribute("listBalance");
+				              	Iterator<Balance> it=list.iterator();
+				              	while(it.hasNext()){
+				              	
+				              		Balance b=it.next();
+				              	%>
+				           <tr>
+				              <td bgcolor="#FFFFFF"><%=b.getBid() %></td>
+									    <td height="20" bgcolor="#FFFFFF"><%=b.getBname() %></td>
+									    <td height="20" bgcolor="#FFFFFF"><%=b.getCname() %></td>
+				              <td height="20" bgcolor="#FFFFFF"><%=b.getBcount() %></td>
+				              <td height="20" bgcolor="#FFFFFF"><%=b.getPrice() %></td>
+				           </tr>
+				            <%
+				              }
+							%>
+				           
+				                 
+				                  
+				                  
+				                  
+				                
+				                  
+				                </table></td>
+				              </tr>
+				            </table></td>
+				        </tr>
+				      </table>
+				      <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
+				        <tr>
+				          <td height="6"><img src="../images/spacer.gif" width="1" height="1" /></td>
+				        </tr>
+				        <tr>
+				          <td height="33"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="right-font08">
+				              <tr>
+				                <td width="50%">共 <span class="right-text09">5</span> 页 | 第 <span class="right-text09">1</span> 页</td>
+				                <td width="49%" align="right">[<a href="#" class="right-font08">首页</a> | <a href="#" class="right-font08">上一页</a> | <a href="#" class="right-font08">下一页</a> | <a href="#" class="right-font08">末页</a>] 转至：</td>
+				                <td width="1%"><table width="20" border="0" cellspacing="0" cellpadding="0">
+				                    <tr>
+				                      <td width="1%"><input name="textfield3" type="text" class="right-textfield03" size="1" /></td>
+				                      <td width="87%"><input name="Submit23222" type="submit" class="right-button06" value=" " />
+				                      </td>
+				                    </tr>
+				                </table></td>
+				              </tr>
+				          </table></td>
+				        </tr>
+				      </table></td>
+				  </tr>
+				</table>
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				
+				  <tr>
+				    <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+				        <tr>
+				          <td height="62" background="../images/nav04.gif">
+				            
+				       <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
+				        <tr>
+				        <td width="24"><img src="../images/ico07.gif" width="20" height="18" /></td>
+				        <td width="519"><label>按部门编号:
+				            <input id="text2" name="text2" type="text" nam="gongs" />
+				        </label>
+				          </input>
+				          <input id="chaxun2" name="chaxun2" type="button" class="right-button02" value="统计" /></td>
+				         <td width="679" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>  
+				        </tr>
+				          </table></td>
+				        </tr>
+				    </table></td></tr>
+				  <tr>
+				    <td><table id="subtree1" style="DISPLAY: " width="100%" border="0" cellspacing="0" cellpadding="0">
+				        <tr>
+				          <td><table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
+				             
+				              <tr>
+				                <td height="40" class="font42"><table width="100%" border="0" cellpadding="4" cellspacing="1" bgcolor="#464646" class="newfont03">
+				
+				                  <tr>
+				                    <td height="20" colspan="14" align="center" bgcolor="#EEEEEE"class="tablestyle_title"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;资产详细列表 &nbsp;</td>
+				                    </tr>
+				                  <tr>
+				           
+				            <td width="12%" height="20" align="center" bgcolor="#EEEEEE">部门编号</td>
+				           <td width="12%" height="20" align="center" bgcolor="#EEEEEE">资产名称</td>
+				           <td width="12%" height="20" align="center" bgcolor="#EEEEEE">数量</td>
+				           <td width="12%" height="20" align="center" bgcolor="#EEEEEE">价格</td>        
+				                
+				           </tr>
+				
+				
+				           		<%
+				              		List<Balance> list1=(List<Balance>)request.getAttribute("listBalance");
+				              	Iterator<Balance> it1=list.iterator();
+				              	while(it1.hasNext()){
+				              	
+				              		Balance c =it1.next();
+				              	%>
+				                  <tr>
+				                   
+				                     <td bgcolor="#FFFFFF"><%=c.getDepartid() %></td>
+				                     <td height="20" bgcolor="#FFFFFF"><%=c.getCname() %></td>
+				                     <td height="20" bgcolor="#FFFFFF"><%=c.getBcount() %></td>
+				                     <td height="20" bgcolor="#FFFFFF"><%=c.getPrice() %></td>
+				                  </tr>
+					             <%
+					              }
+								 %>
+				
+				            </table></td>
+				        </tr>
+				      </table>
+				      <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
+				        <tr>
+				          <td height="6"><img src="../images/spacer.gif" width="1" height="1" /></td>
+				        </tr>
+				        <tr>
+				          <td height="33"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="right-font08">
+				              <tr>
+				                <td width="50%">共 <span class="right-text09">5</span> 页 | 第 <span class="right-text09">1</span> 页</td>
+				                <td width="49%" align="right">[<a href="#" class="right-font08">首页</a> | <a href="#" class="right-font08">上一页</a> | <a href="#" class="right-font08">下一页</a> | <a href="#" class="right-font08">末页</a>] 转至：</td>
+				                <td width="1%"><table width="20" border="0" cellspacing="0" cellpadding="0">
+				                    <tr>
+				                      <td width="1%"><input name="textfield3" type="text" class="right-textfield03" size="1" /></td>
+				                      <td width="87%"><input name="Submit23222" type="submit" class="right-button06" value=" " />
+				                      </td>
+				                    </tr>
+				                </table></td>
+				              </tr>
+				          </table></td>
+				        </tr>
+				      </table></td>
+				  </tr>
+				</table>
+				</form>
+				            
+
+
+
+        </div>
+
+
+        <script th:src="@{/assets/js/jquery.min.js}" src="/static/assets/js/jquery.min.js"></script>
+        <script th:src="@{/assets/js/amazeui.min.js}" src="/static/assets/js/amazeui.min.js"></script>
+        <script th:src="@{/assets/js/iscroll.js}"src="/static/assets/js/iscroll.js"></script>
+        <script th:src="@{/assets/js/app.js}" src="/static/assets/js/app.js"></script>
+</body>
+
+</html>

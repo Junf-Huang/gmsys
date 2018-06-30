@@ -200,26 +200,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </a>
     			<ul class="tpl-left-nav-sub-menu">
                             <li>
-                                <a href="${pageContext.request.contextPath}/buy/findAll.do">
+                                <a th:href="@{/purchase/list}">
                                     <i class="am-icon-angle-right"></i>
                                     <span>采购管理</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>
                                 </a>
-                                <a href="${pageContext.request.contextPath}/buyProuduct/findAll.do">
-                                    <i class="am-icon-angle-right"></i>
-                                    <span>盘点管理</span>
-                                    <i class="tpl-left-nav-content tpl-badge-success"></i>
-                                </a>
-                                <a href="${pageContext.request.contextPath}/buyProuduct/findAll2.do">
+                                <a th:href="@{/assignment/list}">
                                      <i class="am-icon-angle-right"></i>
                                         <span>跨部门调配管理</span>
                                      <i class="tpl-left-nav-content tpl-badge-primary"></i>
                                 </a>
-                                <a href="${pageContext.request.contextPath}/buyProuduct/findAll3.do">
+                                <a th:href="@{/repair/list}">
                                      <i class="am-icon-angle-right"></i>
                                      <span>报修管理</span>
                                 </a>
-								<a href="${pageContext.request.contextPath}/buyProuduct/findAll4.do">
+								<a th:href="@{/scrap/list}">
                                      <i class="am-icon-angle-right"></i>
                                      <span>报废管理</span>
                                 </a>
@@ -235,26 +230,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </a>
                         <ul class="tpl-left-nav-sub-menu">
                             <li>
-                                <a href="${pageContext.request.contextPath}/balance/findAll.do">
+                                <a th:href="@{/balance/findAll}">
                                     <i class="am-icon-angle-right"></i>
                                     <span>资产总数</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>
                                 </a>
-                                <a href="${pageContext.request.contextPath}/cgjl/findAll.do">
+                                <a th:href="@{/purchase/record}">
                                     <i class="am-icon-angle-right"></i>
                                     <span>采购记录</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>
                                 </a>
-                                <a href="${pageContext.request.contextPath}/tpjl/findAll.do">
+                                <a th:href="@{/assignment/record}">
                                      <i class="am-icon-angle-right"></i>
                                         <span>跨部门调配记录</span>
                                      <i class="tpl-left-nav-content tpl-badge-primary"></i>
                                 </a>
-                                <a href="${pageContext.request.contextPath}/bxjl/findAll.do">
+                                <a th:href="@{/repair/record}">
                                      <i class="am-icon-angle-right"></i>
                                      <span>报修记录</span>
                                 </a>
-								<a href="${pageContext.request.contextPath}/bfjl/findAll.do">
+								<a th:href="@{/scrap/record}">
                                      <i class="am-icon-angle-right"></i>
                                      <span>报废记录</span>
                                 </a>
@@ -270,12 +265,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </a>
                         <ul class="tpl-left-nav-sub-menu">
                             <li>
-                                <a href="${pageContext.request.contextPath}/provider/findAll.do">
+                                <a th:href="@{/provider/findAll}">
                                     <i class="am-icon-angle-right"></i>
                                     <span>供应商信息查看</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>
                                 </a>
-                                <a href="${pageContext.request.contextPath}/product/findAll.do">
+                                <a th:href="@{/product/findAll}">
                                     <i class="am-icon-angle-right"></i>
                                     <span>产品信息查看</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>

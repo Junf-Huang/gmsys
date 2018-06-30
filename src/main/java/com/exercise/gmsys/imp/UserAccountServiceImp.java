@@ -1,4 +1,4 @@
-package com.exercise.gmsys.impl;
+package com.exercise.gmsys.imp;
 
 import com.exercise.gmsys.mapper.UserAccountMapper;
 import com.exercise.gmsys.model.UserAccount;

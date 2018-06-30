@@ -21,7 +21,6 @@ public interface DepartmentMapper {
 
     int updateByPrimaryKey(Department record);
 
-
     List<Department> findAll();
 
     List<Department> findByKeyword(String keyword);

@@ -1,4 +1,4 @@
-package com.exercise.gmsys.impl;
+package com.exercise.gmsys.imp;
 
 import com.exercise.gmsys.mapper.AreaMapper;
 import com.exercise.gmsys.model.Area;
@@ -30,8 +30,8 @@ public class AreaServiceImp {
         areaMapper.insert(area);
     }
 
-    public void delete(Integer CID) {
-        areaMapper.deleteByPrimaryKey(CID);
+    public void delete(Integer ID) {
+        areaMapper.deleteByPrimaryKey(ID);
     }
 
     public List<Area> findByKeyword(String keyword) {

@@ -1,9 +1,7 @@
-package com.exercise.gmsys.impl;
+package com.exercise.gmsys.imp;
 
 import com.exercise.gmsys.mapper.CategoryMapper;
 import com.exercise.gmsys.model.Category;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

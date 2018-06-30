@@ -61,12 +61,13 @@
             是否生成 example类 -->
 
         <table tableName="balance"
-               domainObjectName="Asset" enableCountByExample="false"
+               domainObjectName="Balance" enableCountByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                enableUpdateByExample="false">
             <!-- 生成的bean的属性不采用驼峰-->
             <property name="useActualColumnNames" value="true"/>
         </table>
+
 
     </context>
 </generatorConfiguration>

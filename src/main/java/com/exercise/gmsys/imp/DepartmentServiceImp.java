@@ -1,4 +1,4 @@
-package com.exercise.gmsys.impl;
+package com.exercise.gmsys.imp;
 
 import com.exercise.gmsys.mapper.DepartmentMapper;
 import com.exercise.gmsys.model.Department;

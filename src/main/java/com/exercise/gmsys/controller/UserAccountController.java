@@ -1,6 +1,5 @@
 package com.exercise.gmsys.controller;
 
-import com.exercise.gmsys.impl.UserAccountServiceImp;
 import com.exercise.gmsys.model.UserAccount;
 import com.exercise.gmsys.service.UserAccountService;
 import lombok.extern.slf4j.Slf4j;
