@@ -1,0 +1,132 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Amaze UI Admin index Examples</title>
+    <meta name="description" content="这是一个 index 页面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" th:href="@{/assets/i/favicon.png}" href="/static/assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" th:href="@{/assets/i/app-icon72x72@2x.png}" href="/static/assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" th:href="@{/assets/css/amazeui.min.css}" href="../../static/assets/css/amazeui.min.css"/>
+    <link rel="stylesheet" th:href="@{/assets/css/admin.css}" href="../../static/assets/css/admin.css">
+    <link rel="stylesheet" th:href="@{/assets/css/app.css}" href="../../static/assets/css/app.css">
+    <script th:src="@{/assets/js/echarts.min.js}" src="../../static/assets/js/echarts.min.js"></script>
+    <link rel="stylesheet" rev="stylesheet" href="../../static/css/style.css" th:href="@{/css/style.css}" type="text/css" media="all" />
+
+
+<script language="JavaScript" type="text/javascript">
+function tishi()
+{
+  var a=confirm('数据库中保存有该人员基本信息，您可以修改或保留该信息。');
+  if(a!=true)return false;
+  window.open("冲突页.htm","","depended=0,alwaysRaised=1,width=800,height=400,location=0,menubar=0,resizable=0,scrollbars=0,status=0,toolbar=0");
+}
+
+function check()
+{
+document.getElementById("aa").style.display="";
+}
+
+</script>
+<style type="text/css">
+<!--
+.atten {font-size:12px;font-weight:normal;color:#F00;}
+-->
+</style>
+</head>
+
+<body data-type="index">
+
+<div th:replace="index::header">
+</div>
+
+<div th:replace="index::list">
+</div>
+        <div class="tpl-content-wrapper">
+            <form th:action="@{/provider/update}" method="post"  name="form"  >
+				<div class="MainDiv">
+				<table width="99%" border="0" cellpadding="0" cellspacing="0" class="CContent">
+				  <tr>
+				      <th class="tablestyle_title" >供应商基本信息修改</th>
+				  </tr>
+				  <tr>
+				    <td class="CPanel">
+						
+						<table border="0" cellpadding="0" cellspacing="0" style="width:100%">
+						<tr><td align="left">
+						<input type="button" name="Submit" value="保存" class="button" onclick="alert('保存成功！');"/>　
+							
+							<input type="button" name="Submit2" value="返回" class="button" onclick="window.history.go(-1);"/>
+						</td></tr>
+								<TR>
+							<TD width="100%">
+								<fieldset style="height:100%;">
+								<legend>供应商信息</legend>
+									  <table border="0" cellpadding="2" cellspacing="1" style="width:100%">
+									 
+									  <tr>
+									  <td nowrap align="right" width="15%">供应商编号:</td>
+									    <td width="35%"><input name="PROVID" type="text" class="text" style="width:154px" th:value="${provider.getPROVID()}" readonly />
+								        <span class="red">*</span></td>
+									    <td nowrap align="right" width="15%">供应商名称:</td>
+									    <td width="35%"><input name="PROVNAME" type="text" class="text" style="width:154px" th:value="${provider.getPROVNAME()}" />
+									  </tr>
+									   <tr>
+									  <td nowrap align="right" width="15%">联系电话:</td>
+									    <td width="35%"><input name="PHONE" type="text" class="text" style="width:154px" th:value="${provider.getPHONE()}" />
+								      
+									    <td nowrap align="right" width="15%">联系地址:</td>
+									    <td width="35%"><input name="ADDRESS" type="text" class="text" style="width:154px" th:value="${provider.getADDRESS()}" />
+									  </tr>
+									   
+									  </table>
+							  <br />
+								</fieldset>
+								</TD>
+							
+						</TR>
+						</TABLE>
+					 </td>
+				  </tr>
+				  
+				  
+						
+						
+						
+						<TR>
+							<TD colspan="2" align="center" height="50px">
+							<input type="submit" name="Submit" value="保存" class="button" />　
+							
+							<input type="button" name="Submit2" value="返回" class="button" onclick="window.history.go(-1);"/></TD>
+						</TR>
+						</TABLE>
+					
+					
+					 </td>
+				  </tr>
+				  
+				  
+				  
+				  </table>
+				
+				</div>
+				</form>
+            
+
+
+
+        </div>
+
+
+        <script th:src="@{/assets/js/jquery.min.js}" src="/static/assets/js/jquery.min.js"></script>
+        <script th:src="@{/assets/js/amazeui.min.js}" src="/static/assets/js/amazeui.min.js"></script>
+        <script th:src="@{/assets/js/iscroll.js}"src="/static/assets/js/iscroll.js"></script>
+        <script th:src="@{/assets/js/app.js}" src="/static/assets/js/app.js"></script>
+</body>
+
+</html>

@@ -265,12 +265,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </a>
                         <ul class="tpl-left-nav-sub-menu">
                             <li>
-                                <a th:href="@{/provider/findAll}">
+                                <a th:href="@{/provider/list}">
                                     <i class="am-icon-angle-right"></i>
                                     <span>供应商信息查看</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>
                                 </a>
-                                <a th:href="@{/product/findAll}">
+                                <a th:href="@{/product/list}">
                                     <i class="am-icon-angle-right"></i>
                                     <span>产品信息查看</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>
@@ -280,7 +280,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </li>
 
                     <li class="tpl-left-nav-item">
-                        <a href="login" class="nav-link tpl-left-nav-link-list">
+                        <a th:href="@{/login}" class="nav-link tpl-left-nav-link-list">
                             <i class="am-icon-key"></i>
                             <span>登录</span>
 
