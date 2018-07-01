@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.exercise.gmsys.mapper.ProductMapper">
+  <resultMap id="BaseResultMap" type="com.exercise.gmsys.model.Product">
+    <id column="PRODID" jdbcType="INTEGER" property="PRODID" />
+    <result column="PRODNAME" jdbcType="VARCHAR" property="PRODNAME" />
+    <result column="PRODCOUNT" jdbcType="DOUBLE" property="PRODCOUNT" />
+    <result column="PROVID" jdbcType="INTEGER" property="PROVID" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    PRODID, PRODNAME, PRODCOUNT, PROVID
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from product
+    where PRODID = #{PRODID,jdbcType=INTEGER}
+  </select>
+
+  <select id="findAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from product
+  </select>
+
+  <select id="findByKeyword" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from product
+    WHERE PRODID LIKE "%"#{keyword}"%"
+  </select>
+
+  <select id="findByProviderId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from product
+    WHERE PRODID = #{ProviderId}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from product
+    where PRODID = #{PRODID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.exercise.gmsys.model.Product">
+    insert into product (PRODID, PRODNAME, PRODCOUNT, 
+      PROVID)
+    values (#{PRODID,jdbcType=INTEGER}, #{PRODNAME,jdbcType=VARCHAR}, #{PRODCOUNT,jdbcType=DOUBLE}, 
+      #{PROVID,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.exercise.gmsys.model.Product">
+    insert into product
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="PRODID != null">
+        PRODID,
+      </if>
+      <if test="PRODNAME != null">
+        PRODNAME,
+      </if>
+      <if test="PRODCOUNT != null">
+        PRODCOUNT,
+      </if>
+      <if test="PROVID != null">
+        PROVID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="PRODID != null">
+        #{PRODID,jdbcType=INTEGER},
+      </if>
+      <if test="PRODNAME != null">
+        #{PRODNAME,jdbcType=VARCHAR},
+      </if>
+      <if test="PRODCOUNT != null">
+        #{PRODCOUNT,jdbcType=DOUBLE},
+      </if>
+      <if test="PROVID != null">
+        #{PROVID,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.exercise.gmsys.model.Product">
+    update product
+    <set>
+      <if test="PRODNAME != null">
+        PRODNAME = #{PRODNAME,jdbcType=VARCHAR},
+      </if>
+      <if test="PRODCOUNT != null">
+        PRODCOUNT = #{PRODCOUNT,jdbcType=DOUBLE},
+      </if>
+      <if test="PROVID != null">
+        PROVID = #{PROVID,jdbcType=INTEGER},
+      </if>
+    </set>
+    where PRODID = #{PRODID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.exercise.gmsys.model.Product">
+    update product
+    set PRODNAME = #{PRODNAME,jdbcType=VARCHAR},
+      PRODCOUNT = #{PRODCOUNT,jdbcType=DOUBLE},
+      PROVID = #{PROVID,jdbcType=INTEGER}
+    where PRODID = #{PRODID,jdbcType=INTEGER}
+  </update>
+</mapper>

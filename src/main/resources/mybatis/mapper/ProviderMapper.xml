@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.exercise.gmsys.mapper.ProviderMapper">
+  <resultMap id="BaseResultMap" type="com.exercise.gmsys.model.Provider">
+    <id column="PROVID" jdbcType="INTEGER" property="PROVID" />
+    <result column="PROVNAME" jdbcType="VARCHAR" property="PROVNAME" />
+    <result column="ADDRESS" jdbcType="VARCHAR" property="ADDRESS" />
+    <result column="PHONE" jdbcType="VARCHAR" property="PHONE" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    PROVID, PROVNAME, ADDRESS, PHONE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from provider
+    where PROVID = #{PROVID,jdbcType=INTEGER}
+  </select>
+
+  <select id="findAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from provider
+  </select>
+
+  <select id="findByKeyword" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from provider
+    WHERE PROVID LIKE "%"#{keyword}"%"
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from provider
+    where PROVID = #{PROVID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.exercise.gmsys.model.Provider">
+    insert into provider (PROVID, PROVNAME, ADDRESS, 
+      PHONE)
+    values (#{PROVID,jdbcType=INTEGER}, #{PROVNAME,jdbcType=VARCHAR}, #{ADDRESS,jdbcType=VARCHAR}, 
+      #{PHONE,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.exercise.gmsys.model.Provider">
+    insert into provider
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="PROVID != null">
+        PROVID,
+      </if>
+      <if test="PROVNAME != null">
+        PROVNAME,
+      </if>
+      <if test="ADDRESS != null">
+        ADDRESS,
+      </if>
+      <if test="PHONE != null">
+        PHONE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="PROVID != null">
+        #{PROVID,jdbcType=INTEGER},
+      </if>
+      <if test="PROVNAME != null">
+        #{PROVNAME,jdbcType=VARCHAR},
+      </if>
+      <if test="ADDRESS != null">
+        #{ADDRESS,jdbcType=VARCHAR},
+      </if>
+      <if test="PHONE != null">
+        #{PHONE,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.exercise.gmsys.model.Provider">
+    update provider
+    <set>
+      <if test="PROVNAME != null">
+        PROVNAME = #{PROVNAME,jdbcType=VARCHAR},
+      </if>
+      <if test="ADDRESS != null">
+        ADDRESS = #{ADDRESS,jdbcType=VARCHAR},
+      </if>
+      <if test="PHONE != null">
+        PHONE = #{PHONE,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where PROVID = #{PROVID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.exercise.gmsys.model.Provider">
+    update provider
+    set PROVNAME = #{PROVNAME,jdbcType=VARCHAR},
+      ADDRESS = #{ADDRESS,jdbcType=VARCHAR},
+      PHONE = #{PHONE,jdbcType=VARCHAR}
+    where PROVID = #{PROVID,jdbcType=INTEGER}
+  </update>
+</mapper>

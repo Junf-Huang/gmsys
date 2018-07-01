@@ -103,196 +103,120 @@ $(function(){
         $("#fom").submit();
     });
 });
+function link(){
+    document.getElementById("fom").action="adddiaopei.htm";
+    document.getElementById("fom").submit();
+}
+
+function go() {
+    console.log("redirectPage:"+$('#num').val());
+    var num = $('#num').val();
+    $('#pageNum').attr('href','/asset/record?pageNum='+num);
+}
 </SCRIPT>
 <body data-type="index">
 
+<div th:replace="index::header">
+</div>
 
+<div th:replace="index::list">
+</div>
 
-        <div class="tpl-content-wrapper">
-            <form name="fom" id="fom" method="post">
-				<table width="100%" border="0" cellspacing="0" cellpadding="0">
-				
-				  <tr>
-				    <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
-				        <tr>
-				          <td height="62" background="../images/nav04.gif">
-				            
-						   <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
-						    <tr>
-							  <td width="24"><img src="../images/ico07.gif" width="20" height="18" /></td>
-							  <td width="519"><label>按资产分类编号:
-							      <input id="text" name="text" type="text" nam="gongs" />
-							  </label>
-							    </input>
-							    <input id="chaxun" name="chaxun" type="button" class="right-button02" value="统计" /></td>
-							   <td width="679" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>	
-						    </tr>
-				          </table></td>
-				        </tr>
-				    </table></td></tr>
-				  <tr>
-				    <td><table id="subtree1" style="DISPLAY: " width="100%" border="0" cellspacing="0" cellpadding="0">
-				        <tr>
-				          <td><table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
-				          	 
-				              <tr>
-				                <td height="40" class="font42"><table width="100%" border="0" cellpadding="4" cellspacing="1" bgcolor="#464646" class="newfont03">
-				
-									        <tr>
-				                    <td height="20" colspan="14" align="center" bgcolor="#EEEEEE"class="tablestyle_title"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;资产详细列表 &nbsp;</td>
-				                    </tr>
-				                  <tr>
-								   
-				            <td width="12%" height="20" align="center" bgcolor="#EEEEEE">资产分类编号</td>
-									 <td width="12%" height="20" align="center" bgcolor="#EEEEEE">分类名称</td>
-				           <td width="12%" height="20" align="center" bgcolor="#EEEEEE">资产名称</td>
-				           <td width="12%" height="20" align="center" bgcolor="#EEEEEE">数量</td>
-				           <td width="12%" height="20" align="center" bgcolor="#EEEEEE">价格</td>        
-				                
-				           </tr>
-				           
-				           <%
-				              		List<Balance> list=(List<Balance>)request.getAttribute("listBalance");
-				              	Iterator<Balance> it=list.iterator();
-				              	while(it.hasNext()){
-				              	
-				              		Balance b=it.next();
-				              	%>
-				           <tr>
-				              <td bgcolor="#FFFFFF"><%=b.getBid() %></td>
-									    <td height="20" bgcolor="#FFFFFF"><%=b.getBname() %></td>
-									    <td height="20" bgcolor="#FFFFFF"><%=b.getCname() %></td>
-				              <td height="20" bgcolor="#FFFFFF"><%=b.getBcount() %></td>
-				              <td height="20" bgcolor="#FFFFFF"><%=b.getPrice() %></td>
-				           </tr>
-				            <%
-				              }
-							%>
-				           
-				                 
-				                  
-				                  
-				                  
-				                
-				                  
-				                </table></td>
-				              </tr>
-				            </table></td>
-				        </tr>
-				      </table>
-				      <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
-				        <tr>
-				          <td height="6"><img src="../images/spacer.gif" width="1" height="1" /></td>
-				        </tr>
-				        <tr>
-				          <td height="33"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="right-font08">
-				              <tr>
-				                <td width="50%">共 <span class="right-text09">5</span> 页 | 第 <span class="right-text09">1</span> 页</td>
-				                <td width="49%" align="right">[<a href="#" class="right-font08">首页</a> | <a href="#" class="right-font08">上一页</a> | <a href="#" class="right-font08">下一页</a> | <a href="#" class="right-font08">末页</a>] 转至：</td>
-				                <td width="1%"><table width="20" border="0" cellspacing="0" cellpadding="0">
-				                    <tr>
-				                      <td width="1%"><input name="textfield3" type="text" class="right-textfield03" size="1" /></td>
-				                      <td width="87%"><input name="Submit23222" type="submit" class="right-button06" value=" " />
-				                      </td>
-				                    </tr>
-				                </table></td>
-				              </tr>
-				          </table></td>
-				        </tr>
-				      </table></td>
-				  </tr>
-				</table>
-				<table width="100%" border="0" cellspacing="0" cellpadding="0">
-				
-				  <tr>
-				    <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
-				        <tr>
-				          <td height="62" background="../images/nav04.gif">
-				            
-				       <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
-				        <tr>
-				        <td width="24"><img src="../images/ico07.gif" width="20" height="18" /></td>
-				        <td width="519"><label>按部门编号:
-				            <input id="text2" name="text2" type="text" nam="gongs" />
-				        </label>
-				          </input>
-				          <input id="chaxun2" name="chaxun2" type="button" class="right-button02" value="统计" /></td>
-				         <td width="679" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>  
-				        </tr>
-				          </table></td>
-				        </tr>
-				    </table></td></tr>
-				  <tr>
-				    <td><table id="subtree1" style="DISPLAY: " width="100%" border="0" cellspacing="0" cellpadding="0">
-				        <tr>
-				          <td><table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
-				             
-				              <tr>
-				                <td height="40" class="font42"><table width="100%" border="0" cellpadding="4" cellspacing="1" bgcolor="#464646" class="newfont03">
-				
-				                  <tr>
-				                    <td height="20" colspan="14" align="center" bgcolor="#EEEEEE"class="tablestyle_title"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;资产详细列表 &nbsp;</td>
-				                    </tr>
-				                  <tr>
-				           
-				            <td width="12%" height="20" align="center" bgcolor="#EEEEEE">部门编号</td>
-				           <td width="12%" height="20" align="center" bgcolor="#EEEEEE">资产名称</td>
-				           <td width="12%" height="20" align="center" bgcolor="#EEEEEE">数量</td>
-				           <td width="12%" height="20" align="center" bgcolor="#EEEEEE">价格</td>        
-				                
-				           </tr>
-				
-				
-				           		<%
-				              		List<Balance> list1=(List<Balance>)request.getAttribute("listBalance");
-				              	Iterator<Balance> it1=list.iterator();
-				              	while(it1.hasNext()){
-				              	
-				              		Balance c =it1.next();
-				              	%>
-				                  <tr>
-				                   
-				                     <td bgcolor="#FFFFFF"><%=c.getDepartid() %></td>
-				                     <td height="20" bgcolor="#FFFFFF"><%=c.getCname() %></td>
-				                     <td height="20" bgcolor="#FFFFFF"><%=c.getBcount() %></td>
-				                     <td height="20" bgcolor="#FFFFFF"><%=c.getPrice() %></td>
-				                  </tr>
-					             <%
-					              }
-								 %>
-				
-				            </table></td>
-				        </tr>
-				      </table>
-				      <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
-				        <tr>
-				          <td height="6"><img src="../images/spacer.gif" width="1" height="1" /></td>
-				        </tr>
-				        <tr>
-				          <td height="33"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="right-font08">
-				              <tr>
-				                <td width="50%">共 <span class="right-text09">5</span> 页 | 第 <span class="right-text09">1</span> 页</td>
-				                <td width="49%" align="right">[<a href="#" class="right-font08">首页</a> | <a href="#" class="right-font08">上一页</a> | <a href="#" class="right-font08">下一页</a> | <a href="#" class="right-font08">末页</a>] 转至：</td>
-				                <td width="1%"><table width="20" border="0" cellspacing="0" cellpadding="0">
-				                    <tr>
-				                      <td width="1%"><input name="textfield3" type="text" class="right-textfield03" size="1" /></td>
-				                      <td width="87%"><input name="Submit23222" type="submit" class="right-button06" value=" " />
-				                      </td>
-				                    </tr>
-				                </table></td>
-				              </tr>
-				          </table></td>
-				        </tr>
-				      </table></td>
-				  </tr>
-				</table>
+<div class="admin-content am-padding-left" style="background-color: #E9ECF3">
+	<div style="background-color: #FFFFFF; border-radius: 6px" class="am-padding ">
+		<div class="am-g" >
+
+			<div class="am-u-sm-12 am-u-md-8">
+				<div class="am-btn-toolbar">
+					<div class="am-btn-group am-btn-group-xs">
+					</div>
+				</div>
+			</div>
+			<div class="am-u-sm-12 am-u-md-4" >
+				<form th:action="@{/asset/record}">
+					<div class="am-input-group am-input-group-sm">
+						<input class="am-form-field" type="text" name="keyword" placeholder="调配编号">
+						<span class="am-input-group-btn">
+                        <input class="am-btn am-btn-default" type="submit" value="搜索">搜索</input>
+                        </span>
+					</div>
 				</form>
-				            
+			</div>
+		</div>
 
+		<div class="am-g">
+			<div class="am-u-sm-12">
+				<form class="am-form">
+					<table class="am-table am-table-hover table-main">
+						<thead>
+						<tr><th colspan="8" style="text-align: center">资产详细列表</th></tr>
+						<tr>
+							<th class="table-title">资产分类编号</th>
+							<th class="table-type">资产名称</th>
+                            <th class="table-type">数量</th>
+                            <th class="table-type">价格</th>
+                            <th class="table-type">分类名称</th>
+                            <th class="table-type">部门编号</th>
+						</tr>
+						</thead>
+						<tbody id="content">
+						<tr th:each="asset :${data}">
+							<td th:text="${asset.getBID()}">Business management</td>
+							<td th:text="${asset.getBNAME()}">Business management</td>
+							<td th:text="${asset.getBCOUNT()}">Business management</td>
+                            <td th:text="${asset.getPRICE()}">Business management</td>
+                            <td th:text="${#dates.format(asset.getBDATE(), 'yyyy-MM-dd hh:mm:ss')}" hidden>Business management</td>
+                            <td th:text="${asset.getCategoryName()}">Business management</td>
+							<td th:text="${asset.getDEPARTID()}">Business management</td>
+							<td>
+								<div class="am-btn-toolbar">
+									<div class="am-btn-group am-btn-group-xs">
+									</div>
+								</div>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+				</form>
+			</div>
 
+		</div>
 
-        </div>
+	</div>
 
+	<div class="am-cf am-margin">
+		共<span class="right-text09" th:text="${totalPages}"> 5 </span>页 | 第<span class="right-text09" th:text="${pageNum}"> 1 </span>页
+		<div class="am-fr">
+			<ul class="am-pagination" th:if="${keyword} == null">
+				<li><a th:href="@{${'/asset/record'}(pageNum=1,pageSize=${pageSize})}">首页</a></li>
+				<li><a th:if="${isFirstPage}" href="javascript:void(0);">上一页</a></li>
+				<li><a th:if="${not isFirstPage}" th:href="@{${'/asset/record'}(pageNum=${pageNum-1})}">上一页</a></li>
+				<li><a th:if="${isLastPage}" href="javascript:void(0);">下一页</a></li>
+				<li><a th:if="${not isLastPage}" th:href="@{${'/asset/record'}(pageNum=${pageNum+1})}">下一页</a></li>
+				<li><a th:href="@{${'/asset/record'}(pageNum=${totalPages})}">末页</a></li>
+
+			</ul>
+			<ul class="am-pagination" th:if="${keyword} != null">
+				<li><a th:href="@{${'/asset/record'}(pageNum=1,pageSize=${pageSize}, keyword=${keyword})}">首页</a></li>
+				<li><a th:if="${isFirstPage}" href="javascript:void(0);">上一页</a></li>
+				<li><a th:if="${not isFirstPage}" th:href="@{${'/asset/record'}(pageNum=${pageNum-1}, keyword=${keyword})}">上一页</a></li>
+				<li><a th:if="${isLastPage}" href="javascript:void(0);">下一页</a></li>
+				<li><a th:if="${not isLastPage}" th:href="@{${'/asset/record'}(pageNum=${pageNum+1}, keyword=${keyword})}">下一页</a></li>
+				<li><a th:href="@{${'/asset/record'}(pageNum=${totalPages}, keyword=${keyword})}">末页</a></li>
+			</ul>
+			跳转至:&emsp;
+			<label for="num"></label><input name="textfield3" type="text" size="1" id="num"/>&emsp;
+			<a id="pageNum" type="button" onclick="go()">Go</a>
+		</div>
+
+		<div class="am-pagination" th:if="${keyword} != null">
+
+		</div>
+	</div>
+
+</div>
+
+</div>
 
         <script th:src="@{/assets/js/jquery.min.js}" src="/static/assets/js/jquery.min.js"></script>
         <script th:src="@{/assets/js/amazeui.min.js}" src="/static/assets/js/amazeui.min.js"></script>

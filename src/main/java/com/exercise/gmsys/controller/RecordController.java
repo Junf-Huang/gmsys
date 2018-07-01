@@ -50,7 +50,7 @@ public class RecordController {
         model.addAttribute("totalPages", pageInfo.getPages());
         model.addAttribute("isLastPage", pageInfo.isIsLastPage());
 
-        return "usageStatistics/totalList";
+        return "usageStatistics/totalAsset";
     }
 
     @GetMapping("/purchase/record")

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.exercise.gmsys.mapper.RepairMapper">
+  <resultMap id="BaseResultMap" type="com.exercise.gmsys.model.Repair">
+    <id column="REPAIRID" jdbcType="INTEGER" property="REPAIRID" />
+    <result column="RCOUNT" jdbcType="DOUBLE" property="RCOUNT" />
+    <result column="RTIME" jdbcType="TIMESTAMP" property="RTIME" />
+    <result column="DEPARTID" jdbcType="INTEGER" property="DEPARTID" />
+    <result column="BID" jdbcType="INTEGER" property="BID" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    REPAIRID, RCOUNT, RTIME, DEPARTID, BID
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from repair
+    where REPAIRID = #{REPAIRID,jdbcType=INTEGER}
+  </select>
+
+  <select id="findAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from repair
+  </select>
+
+  <select id="findByKeyword" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from repair
+    WHERE REPAIRID LIKE "%"#{keyword}"%"
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from repair
+    where REPAIRID = #{REPAIRID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.exercise.gmsys.model.Repair">
+    insert into repair (REPAIRID, RCOUNT, RTIME, 
+      DEPARTID, BID)
+    values (#{REPAIRID,jdbcType=INTEGER}, #{RCOUNT,jdbcType=DOUBLE}, #{RTIME,jdbcType=TIMESTAMP}, 
+      #{DEPARTID,jdbcType=INTEGER}, #{BID,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.exercise.gmsys.model.Repair">
+    insert into repair
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="REPAIRID != null">
+        REPAIRID,
+      </if>
+      <if test="RCOUNT != null">
+        RCOUNT,
+      </if>
+      <if test="RTIME != null">
+        RTIME,
+      </if>
+      <if test="DEPARTID != null">
+        DEPARTID,
+      </if>
+      <if test="BID != null">
+        BID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="REPAIRID != null">
+        #{REPAIRID,jdbcType=INTEGER},
+      </if>
+      <if test="RCOUNT != null">
+        #{RCOUNT,jdbcType=DOUBLE},
+      </if>
+      <if test="RTIME != null">
+        #{RTIME,jdbcType=TIMESTAMP},
+      </if>
+      <if test="DEPARTID != null">
+        #{DEPARTID,jdbcType=INTEGER},
+      </if>
+      <if test="BID != null">
+        #{BID,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.exercise.gmsys.model.Repair">
+    update repair
+    <set>
+      <if test="RCOUNT != null">
+        RCOUNT = #{RCOUNT,jdbcType=DOUBLE},
+      </if>
+      <if test="RTIME != null">
+        RTIME = #{RTIME,jdbcType=TIMESTAMP},
+      </if>
+      <if test="DEPARTID != null">
+        DEPARTID = #{DEPARTID,jdbcType=INTEGER},
+      </if>
+      <if test="BID != null">
+        BID = #{BID,jdbcType=INTEGER},
+      </if>
+    </set>
+    where REPAIRID = #{REPAIRID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.exercise.gmsys.model.Repair">
+    update repair
+    set RCOUNT = #{RCOUNT,jdbcType=DOUBLE},
+      RTIME = #{RTIME,jdbcType=TIMESTAMP},
+      DEPARTID = #{DEPARTID,jdbcType=INTEGER},
+      BID = #{BID,jdbcType=INTEGER}
+    where REPAIRID = #{REPAIRID,jdbcType=INTEGER}
+  </update>
+</mapper>
